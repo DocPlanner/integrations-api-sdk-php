@@ -30,22 +30,20 @@ $accessToken = $authorization->getAccessToken('YOUR_CLIENT_ID', 'YOUR_CLIENT_SEC
 // Configure access token for authorization 
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
 
-$apiInstance = new DocPlanner\Client\Api\AddressesApi(
+$apiInstance = new DocPlanner\Client\Api\DoctorsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
-$with = array(\DocPlanner\Client\Model\AddressScopes::VISIT_PAYMENT); // string[] | 
+$with = array(\DocPlanner\Client\Model\DoctorsScopes::SPECIALIZATIONS); // string[] | 
 
 try {
-    $result = $apiInstance->getAddress($facility_id, $doctor_id, $address_id, $with);
+    $result = $apiInstance->getDoctors($facility_id, $with);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AddressesApi->getAddress: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DoctorsApi->getDoctors: ', $e->getMessage(), PHP_EOL;
 }
 
 // Configure access token for authorization 
@@ -59,10 +57,9 @@ $apiInstance = new DocPlanner\Client\Api\AddressesApi(
 );
 $facility_id = 56; // int | ID of the Facility
 $doctor_id = 56; // int | ID of a doctor in a facility
-$with = DocPlanner\Client\Model\AddressesScopes::getAllowableEnumValues(); // string[] | 
 
 try {
-    $result = $apiInstance->getAddresses($facility_id, $doctor_id, $with);
+    $result = $apiInstance->getAddresses($facility_id, $doctor_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AddressesApi->getAddresses: ', $e->getMessage(), PHP_EOL;
@@ -70,9 +67,29 @@ try {
 ?>
 ```
 
+## Authorization
+
+To get access to API you need to make request to `https://www.{domain}/oauth/v2/token` for access token using your client credentials (`client_id` and `client_secret`).
+Then it could be injected to `Configuration` which is used to instantiate API clients.
+Whole authorization process is based on OAuth2 protocol with `grant_type = client_credentials` and `scope = integration`.
+Obtained token is valid for the next 24h, so it is good practice to cache it for that period.
+
+###Example
+```php
+//Get OAuth2 access token
+$authorization = new DocPlanner\Client\Authorization('AUTHORIZATION_URL');
+$accessToken = $authorization->getAccessToken('YOUR_CLIENT_ID', 'YOUR_CLIENT_SECRET');
+
+// Configure access token for authorization 
+$config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
+
+$apiInstance = new DocPlanner\Client\Api\AddressesApi(null, $config);
+```
+
+
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://www.znanylekarz.pl/api/v3/integration*
+All URIs are relative to `https://www.{domain}/api/v3/integration`
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
