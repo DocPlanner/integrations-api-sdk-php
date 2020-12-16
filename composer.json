@@ -1,0 +1,21 @@
+{
+    "name": "DocPlanner/integrations-api-sdk-php",
+    "description": "DocPlanner integration API SDK",
+    "keywords": [
+        "php",
+        "sdk",
+        "api",
+        "docplanner"
+    ],
+    "license": "proprietary",
+    "require": {
+        "php": ">=5.5",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": { "DocPlanner\\Client\\" : "lib/" }
+    }
+}
