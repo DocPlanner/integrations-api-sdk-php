@@ -24,11 +24,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 //Get OAuth2 access token
-$authorization = new DocPlanner\Client\Authorization('AUTHORIZATION_URL');
+$authorization = new DocPlanner\Client\Authorization('https://www.{domain}/oauth/v2/token');
 $accessToken = $authorization->getAccessToken('YOUR_CLIENT_ID', 'YOUR_CLIENT_SECRET');
 
 // Configure access token for authorization 
-$config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
+$config = DocPlanner\Client\Configuration::getDefaultConfiguration();
+$config->setAccessToken($accessToken);
+$config->setHost('https://www.{domain}/api/v3/integration');
 
 $apiInstance = new DocPlanner\Client\Api\DoctorsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -77,7 +79,7 @@ Obtained token is valid for the next 24h, so it is good practice to cache it for
 ###Example
 ```php
 //Get OAuth2 access token
-$authorization = new DocPlanner\Client\Authorization('AUTHORIZATION_URL');
+$authorization = new DocPlanner\Client\Authorization('https://www.{domain}/oauth/v2/token');
 $accessToken = $authorization->getAccessToken('YOUR_CLIENT_ID', 'YOUR_CLIENT_SECRET');
 
 // Configure access token for authorization 

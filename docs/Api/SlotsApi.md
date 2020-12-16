@@ -1,6 +1,6 @@
 # DocPlanner\Client\SlotsApi
 
-All URIs are relative to *https://www.znanylekarz.pl/api/v3/integration*
+All URIs are relative to *https://www.{domain}/api/v3/integration*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

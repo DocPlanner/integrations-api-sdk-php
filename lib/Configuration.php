@@ -80,7 +80,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://www.znanylekarz.pl/api/v3/integration';
+    protected $host = 'https://www.{domain}/api/v3/integration';
 
     /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default
