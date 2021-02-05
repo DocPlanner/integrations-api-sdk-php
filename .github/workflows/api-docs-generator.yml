@@ -3,7 +3,7 @@ name: PHP SDK Generator
 env:
   FETCH_CMD: 'wget https://znanylekarz.pl/openapi/integrations-api.yaml -d --header="X-OAS-INTEGRATIONS-TOKEN: ${{ secrets.OPENAPI_INTEGRATIONS_SPECIFICATION_TOKEN }}"'
   FILE_NAME: integrations-api.yaml
-  BRANCH: actions/generate-sdk
+  BRANCH: develop
 
 on:
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - actions/generate-sdk
+      - develop
 
 jobs:
   diff:
