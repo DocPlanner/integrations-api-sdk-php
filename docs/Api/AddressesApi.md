@@ -12,14 +12,14 @@ Method | HTTP request | Description
 
 
 
-Get a single address of a doctor
+Get a single address of a doctor  Extensions: * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if an address is dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating if visit payment isr enabled
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\AddressesApi(
@@ -28,9 +28,9 @@ $apiInstance = new DocPlanner\Client\Api\AddressesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $with = array(new \DocPlanner\Client\Model\AddressesScopes()); // \DocPlanner\Client\Model\AddressesScopes[] | 
 
 try {
@@ -46,9 +46,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **with** | [**\DocPlanner\Client\Model\AddressesScopes[]**](../Model/\DocPlanner\Client\Model\AddressesScopes.md)|  | [optional]
 
 ### Return type
@@ -57,12 +57,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -71,14 +71,14 @@ Name | Type | Description  | Notes
 
 
 
-Get a list of addresses of a doctor
+Get a list of addresses of a doctor  Extensions: * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if returned addresses are dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating if visit payments are enabled
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\AddressesApi(
@@ -87,8 +87,8 @@ $apiInstance = new DocPlanner\Client\Api\AddressesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $with = array(new \DocPlanner\Client\Model\AddressesScopes()); // \DocPlanner\Client\Model\AddressesScopes[] | 
 
 try {
@@ -104,8 +104,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
  **with** | [**\DocPlanner\Client\Model\AddressesScopes[]**](../Model/\DocPlanner\Client\Model\AddressesScopes.md)|  | [optional]
 
 ### Return type
@@ -114,12 +114,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
+**id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **surname** | **string** |  | [optional] 
 **addresses** | [**\DocPlanner\Client\Model\Addresses**](Addresses.md) |  | [optional] 

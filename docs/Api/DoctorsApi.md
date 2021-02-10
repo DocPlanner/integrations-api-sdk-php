@@ -12,14 +12,14 @@ Method | HTTP request | Description
 
 
 
-Get a single doctor in a facility
+Get a single doctor in a facility  Extensions: * `doctor.addresses` - with this parameter in url, query results will return a list of all the doctor addresses in a given facility * `address.booking_extra_fields` - with this parameter in url, query results will return required parameters requested from patient in the booking flow * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if an address is dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating when visit payments are enabled
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\DoctorsApi(
@@ -28,8 +28,8 @@ $apiInstance = new DocPlanner\Client\Api\DoctorsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $with = array(new \DocPlanner\Client\Model\DoctorScopes()); // \DocPlanner\Client\Model\DoctorScopes[] | 
 
 try {
@@ -45,8 +45,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
  **with** | [**\DocPlanner\Client\Model\DoctorScopes[]**](../Model/\DocPlanner\Client\Model\DoctorScopes.md)|  | [optional]
 
 ### Return type
@@ -55,12 +55,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -69,14 +69,14 @@ Name | Type | Description  | Notes
 
 
 
-Get a list of doctors in a facility
+Get a list of doctors in a facility  Extensions: * `doctor.specializations` - with this parameter in url, query results will contain specialization of doctors
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\DoctorsApi(
@@ -85,7 +85,7 @@ $apiInstance = new DocPlanner\Client\Api\DoctorsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
 $with = array(new \DocPlanner\Client\Model\DoctorsScopes()); // \DocPlanner\Client\Model\DoctorsScopes[] | 
 
 try {
@@ -101,7 +101,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
+ **facility_id** | **string**| ID of the Facility |
  **with** | [**\DocPlanner\Client\Model\DoctorsScopes[]**](../Model/\DocPlanner\Client\Model\DoctorsScopes.md)|  | [optional]
 
 ### Return type
@@ -110,12 +110,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

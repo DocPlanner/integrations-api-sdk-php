@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
+**id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **doctors** | [**\DocPlanner\Client\Model\Doctors**](Doctors.md) |  | [optional] 
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
+**id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **post_code** | **string** |  | [optional] 
 **street** | **string** |  | [optional] 

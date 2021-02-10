@@ -16,14 +16,14 @@ Method | HTTP request | Description
 
 
 
-Adds new service to an address of the doctor
+Adds new service to an address of the doctor  Services added here are specific to this address (address_services).
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\ServicesApi(
@@ -33,9 +33,9 @@ $apiInstance = new DocPlanner\Client\Api\ServicesApi(
     $config
 );
 $body = new \DocPlanner\Client\Model\AddAddressServiceRequest(); // \DocPlanner\Client\Model\AddAddressServiceRequest | 
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 
 try {
     $apiInstance->addAddressService($body, $facility_id, $doctor_id, $address_id);
@@ -50,9 +50,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\DocPlanner\Client\Model\AddAddressServiceRequest**](../Model/AddAddressServiceRequest.md)|  |
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
 
 ### Return type
 
@@ -60,12 +60,12 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.docplanner+json; charset=utf-8, application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -74,14 +74,14 @@ void (empty response body)
 
 
 
-Delete an address service
+Service deleted in this endpoint is an address service from this specified address (address_services).
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\ServicesApi(
@@ -90,10 +90,10 @@ $apiInstance = new DocPlanner\Client\Api\ServicesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
-$address_service_id = 56; // int | ID of an address service
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
+$address_service_id = "address_service_id_example"; // string | ID of an address service
 
 try {
     $apiInstance->deleteAddressService($facility_id, $doctor_id, $address_id, $address_service_id);
@@ -107,10 +107,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
- **address_service_id** | **int**| ID of an address service |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
+ **address_service_id** | **string**| ID of an address service |
 
 ### Return type
 
@@ -118,12 +118,12 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -132,14 +132,14 @@ void (empty response body)
 
 
 
-View a specific address service
+Service returned in this endpoint is an address service.  Service returned here is from a specified address (address_services).
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\ServicesApi(
@@ -148,10 +148,10 @@ $apiInstance = new DocPlanner\Client\Api\ServicesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
-$address_service_id = 56; // int | ID of an address service
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
+$address_service_id = "address_service_id_example"; // string | ID of an address service
 
 try {
     $result = $apiInstance->getAddressService($facility_id, $doctor_id, $address_id, $address_service_id);
@@ -166,10 +166,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
- **address_service_id** | **int**| ID of an address service |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
+ **address_service_id** | **string**| ID of an address service |
 
 ### Return type
 
@@ -177,12 +177,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -191,14 +191,14 @@ Name | Type | Description  | Notes
 
 
 
-Get a list of services for a specific address
+Services returned in this endpoint are address services.  Services returned here are from specified address (address_services).
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\ServicesApi(
@@ -207,9 +207,9 @@ $apiInstance = new DocPlanner\Client\Api\ServicesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
 
 try {
@@ -225,9 +225,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) | [optional]
 
 ### Return type
@@ -236,12 +236,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -250,14 +250,14 @@ Name | Type | Description  | Notes
 
 
 
-Get a list of available services
+Services returned in this endpoint are dictionary services.  Services returned here are from a dictionary (item_services).  Scopes:  * `services.only_diagnostics` - with this parameter in url, query results will return only dictionary of services dedicated to integration with diagnostics marketplace
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\ServicesApi(
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
@@ -303,14 +303,14 @@ Name | Type | Description  | Notes
 
 
 
-Update part of an address service
+Service updated in this endpoint is an address service from this specified address (address_services).
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\ServicesApi(
@@ -320,10 +320,10 @@ $apiInstance = new DocPlanner\Client\Api\ServicesApi(
     $config
 );
 $body = new \DocPlanner\Client\Model\UpdateAddressServiceRequest(); // \DocPlanner\Client\Model\UpdateAddressServiceRequest | 
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
-$address_service_id = 56; // int | ID of an address service
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
+$address_service_id = "address_service_id_example"; // string | ID of an address service
 
 try {
     $result = $apiInstance->updateAddressService($body, $facility_id, $doctor_id, $address_id, $address_service_id);
@@ -339,10 +339,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\DocPlanner\Client\Model\UpdateAddressServiceRequest**](../Model/UpdateAddressServiceRequest.md)|  |
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
- **address_service_id** | **int**| ID of an address service |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
+ **address_service_id** | **string**| ID of an address service |
 
 ### Return type
 
@@ -350,12 +350,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.docplanner+json; charset=utf-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

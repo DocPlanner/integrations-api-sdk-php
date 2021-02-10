@@ -14,14 +14,14 @@ Method | HTTP request | Description
 
 
 
-Book the slot
+Book a slot
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -31,9 +31,9 @@ $apiInstance = new DocPlanner\Client\Api\SlotsApi(
     $config
 );
 $body = new \DocPlanner\Client\Model\BookSlotRequest(); // \DocPlanner\Client\Model\BookSlotRequest | 
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
 
 try {
@@ -50,9 +50,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\DocPlanner\Client\Model\BookSlotRequest**](../Model/BookSlotRequest.md)|  |
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
 
 ### Return type
@@ -61,12 +61,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -82,7 +82,7 @@ Delete slots for the given date
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -91,9 +91,9 @@ $apiInstance = new DocPlanner\Client\Api\SlotsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $date = new \DateTime("2013-10-20"); // \DateTime | 
 
 try {
@@ -108,9 +108,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **date** | **\DateTime**|  |
 
 ### Return type
@@ -119,12 +119,12 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -133,14 +133,14 @@ void (empty response body)
 
 
 
-List of free slots for the address within specified date range
+List of free slots for the address within specified date range  Extensions: * `slot.services` - with this parameter in url, query results will return address services attached to given slots
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -149,9 +149,9 @@ $apiInstance = new DocPlanner\Client\Api\SlotsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
 $end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
 $with = array(new \DocPlanner\Client\Model\SlotsScopes()); // \DocPlanner\Client\Model\SlotsScopes[] | 
@@ -169,9 +169,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
  **end** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
  **with** | [**\DocPlanner\Client\Model\SlotsScopes[]**](../Model/\DocPlanner\Client\Model\SlotsScopes.md)|  | [optional]
@@ -182,12 +182,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -203,7 +203,7 @@ Adds or replaces the slots. This will override all existing slots for given date
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -213,9 +213,9 @@ $apiInstance = new DocPlanner\Client\Api\SlotsApi(
     $config
 );
 $body = new \DocPlanner\Client\Model\ReplaceSlotsRequest(); // \DocPlanner\Client\Model\ReplaceSlotsRequest | 
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 
 try {
     $apiInstance->replaceSlots($body, $facility_id, $doctor_id, $address_id);
@@ -230,9 +230,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\DocPlanner\Client\Model\ReplaceSlotsRequest**](../Model/ReplaceSlotsRequest.md)|  |
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
 
 ### Return type
 
@@ -240,12 +240,12 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

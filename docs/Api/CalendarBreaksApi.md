@@ -21,7 +21,7 @@ Add a new break to the calendar
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
@@ -31,9 +31,9 @@ $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
     $config
 );
 $body = new \DocPlanner\Client\Model\AddCalendarBreakRequest(); // \DocPlanner\Client\Model\AddCalendarBreakRequest | 
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 
 try {
     $apiInstance->addCalendarBreak($body, $facility_id, $doctor_id, $address_id);
@@ -48,9 +48,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\DocPlanner\Client\Model\AddCalendarBreakRequest**](../Model/AddCalendarBreakRequest.md)|  |
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
 
 ### Return type
 
@@ -58,12 +58,12 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -79,7 +79,7 @@ Delete the calendar break
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
@@ -88,10 +88,10 @@ $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
-$break_id = 56; // int | ID of the Calendar Break
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
+$break_id = "break_id_example"; // string | ID of the Calendar Break
 
 try {
     $apiInstance->deleteCalendarBreak($facility_id, $doctor_id, $address_id, $break_id);
@@ -105,10 +105,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
- **break_id** | **int**| ID of the Calendar Break |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
+ **break_id** | **string**| ID of the Calendar Break |
 
 ### Return type
 
@@ -116,12 +116,12 @@ void (empty response body)
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -137,7 +137,7 @@ View a specific calendar break
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
@@ -146,10 +146,10 @@ $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
-$break_id = 56; // int | ID of the Calendar Break
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
+$break_id = "break_id_example"; // string | ID of the Calendar Break
 
 try {
     $result = $apiInstance->getCalendarBreak($facility_id, $doctor_id, $address_id, $break_id);
@@ -164,10 +164,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
- **break_id** | **int**| ID of the Calendar Break |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
+ **break_id** | **string**| ID of the Calendar Break |
 
 ### Return type
 
@@ -175,12 +175,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -196,7 +196,7 @@ Get the list of calendar breaks
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: oauth2_client_credentials
+// Configure OAuth2 access token for authorization: OAuth 2.0
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
@@ -205,9 +205,9 @@ $apiInstance = new DocPlanner\Client\Api\CalendarBreaksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$facility_id = 56; // int | ID of the Facility
-$doctor_id = 56; // int | ID of a doctor in a facility
-$address_id = 56; // int | ID of a doctor`s address in a facility
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 $till = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 
@@ -224,9 +224,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility_id** | **int**| ID of the Facility |
- **doctor_id** | **int**| ID of a doctor in a facility |
- **address_id** | **int**| ID of a doctor&#x60;s address in a facility |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **since** | **\DateTime**|  |
  **till** | **\DateTime**|  |
 
@@ -236,12 +236,12 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_client_credentials](../../README.md#oauth2_client_credentials)
+[OAuth 2.0](../../README.md#OAuth 2.0)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

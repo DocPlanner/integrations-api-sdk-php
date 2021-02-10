@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
+**id** | **string** |  | [optional] 
 **since** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **till** | [**\DateTime**](\DateTime.md) |  | [optional] 
 

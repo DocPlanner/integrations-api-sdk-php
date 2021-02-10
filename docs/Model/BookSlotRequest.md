@@ -3,9 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address_service_id** | **int** |  | 
+**address_service_id** | **string** |  | 
 **is_returning** | **bool** |  | 
 **patient** | [**\DocPlanner\Client\Model\Patient**](Patient.md) |  | 
+**duration** | **int** |  | 
+**send_notifications** | **bool** | Whether we should send visit notificatications | [optional] [default to true]
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
