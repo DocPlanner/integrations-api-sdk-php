@@ -33,14 +33,14 @@ jobs:
         if: steps.cache.outputs.cache-hit == 'true'
         run: echo "::set-output name=diff::true"
       - name: Generate specification artifacts
-        if: steps.checksum.outputs.diff != 'false'
+        if: steps.checksum.outputs.diff != 'true'
         uses: actions/upload-artifact@v2
         with:
           name: specification
           path: ${{ env.FILE_NAME }}
   generate:
     needs: diff
-    if: needs.diff.outputs.diff != 'false'
+    if: needs.diff.outputs.diff != 'true'
     name: Generate SDK
     runs-on: ubuntu-latest
     steps:
@@ -84,6 +84,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ env.BRANCH }}
       - name: Create Release
+        if: steps.commit.outputs.push == 'true'
         id: create_release
         uses: actions/create-release@v1
         env:
