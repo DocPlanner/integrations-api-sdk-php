@@ -152,6 +152,14 @@ class CalendarBreaksApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -470,22 +478,6 @@ class CalendarBreaksApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\DocPlanner\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\DocPlanner\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\DocPlanner\Client\Model\Error',
@@ -1384,6 +1376,334 @@ class CalendarBreaksApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation moveCalendarBreak
+     *
+     * @param  \DocPlanner\Client\Model\MoveCalendarBreakRequest $body body (required)
+     * @param  string $facility_id ID of the Facility (required)
+     * @param  string $doctor_id ID of a doctor in a facility (required)
+     * @param  string $address_id ID of a doctor&#x60;s address in a facility (required)
+     * @param  string $break_id ID of the Calendar Break (required)
+     *
+     * @throws \DocPlanner\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function moveCalendarBreak($body, $facility_id, $doctor_id, $address_id, $break_id)
+    {
+        $this->moveCalendarBreakWithHttpInfo($body, $facility_id, $doctor_id, $address_id, $break_id);
+    }
+
+    /**
+     * Operation moveCalendarBreakWithHttpInfo
+     *
+     * @param  \DocPlanner\Client\Model\MoveCalendarBreakRequest $body (required)
+     * @param  string $facility_id ID of the Facility (required)
+     * @param  string $doctor_id ID of a doctor in a facility (required)
+     * @param  string $address_id ID of a doctor&#x60;s address in a facility (required)
+     * @param  string $break_id ID of the Calendar Break (required)
+     *
+     * @throws \DocPlanner\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function moveCalendarBreakWithHttpInfo($body, $facility_id, $doctor_id, $address_id, $break_id)
+    {
+        $returnType = '';
+        $request = $this->moveCalendarBreakRequest($body, $facility_id, $doctor_id, $address_id, $break_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation moveCalendarBreakAsync
+     *
+     * 
+     *
+     * @param  \DocPlanner\Client\Model\MoveCalendarBreakRequest $body (required)
+     * @param  string $facility_id ID of the Facility (required)
+     * @param  string $doctor_id ID of a doctor in a facility (required)
+     * @param  string $address_id ID of a doctor&#x60;s address in a facility (required)
+     * @param  string $break_id ID of the Calendar Break (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveCalendarBreakAsync($body, $facility_id, $doctor_id, $address_id, $break_id)
+    {
+        return $this->moveCalendarBreakAsyncWithHttpInfo($body, $facility_id, $doctor_id, $address_id, $break_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation moveCalendarBreakAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  \DocPlanner\Client\Model\MoveCalendarBreakRequest $body (required)
+     * @param  string $facility_id ID of the Facility (required)
+     * @param  string $doctor_id ID of a doctor in a facility (required)
+     * @param  string $address_id ID of a doctor&#x60;s address in a facility (required)
+     * @param  string $break_id ID of the Calendar Break (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveCalendarBreakAsyncWithHttpInfo($body, $facility_id, $doctor_id, $address_id, $break_id)
+    {
+        $returnType = '';
+        $request = $this->moveCalendarBreakRequest($body, $facility_id, $doctor_id, $address_id, $break_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'moveCalendarBreak'
+     *
+     * @param  \DocPlanner\Client\Model\MoveCalendarBreakRequest $body (required)
+     * @param  string $facility_id ID of the Facility (required)
+     * @param  string $doctor_id ID of a doctor in a facility (required)
+     * @param  string $address_id ID of a doctor&#x60;s address in a facility (required)
+     * @param  string $break_id ID of the Calendar Break (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function moveCalendarBreakRequest($body, $facility_id, $doctor_id, $address_id, $break_id)
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling moveCalendarBreak'
+            );
+        }
+        // verify the required parameter 'facility_id' is set
+        if ($facility_id === null || (is_array($facility_id) && count($facility_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $facility_id when calling moveCalendarBreak'
+            );
+        }
+        // verify the required parameter 'doctor_id' is set
+        if ($doctor_id === null || (is_array($doctor_id) && count($doctor_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $doctor_id when calling moveCalendarBreak'
+            );
+        }
+        // verify the required parameter 'address_id' is set
+        if ($address_id === null || (is_array($address_id) && count($address_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $address_id when calling moveCalendarBreak'
+            );
+        }
+        // verify the required parameter 'break_id' is set
+        if ($break_id === null || (is_array($break_id) && count($break_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $break_id when calling moveCalendarBreak'
+            );
+        }
+
+        $resourcePath = '/facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/breaks/{break_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($facility_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'facility_id' . '}',
+                ObjectSerializer::toPathValue($facility_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($doctor_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'doctor_id' . '}',
+                ObjectSerializer::toPathValue($doctor_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($address_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'address_id' . '}',
+                ObjectSerializer::toPathValue($address_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($break_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'break_id' . '}',
+                ObjectSerializer::toPathValue($break_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/vnd.error+docplanner+json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/vnd.error+docplanner+json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
