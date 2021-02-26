@@ -52,6 +52,16 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: specification
+      - name: Parse changelog
+        id: changelog
+        run: |
+          version="$(cat integrations-api.yaml | grep -Po '(?<=version:\s.)[a-zA-Z0-9.]*(?=.$)')"
+          commit="$(cat integrations-api.yaml | grep -Pzo "(?<=$version:\s>\n)[\s\S]*?[\r\n]{2}" | tr -s ' ')"
+          commit="${commit//'%'/'%25'}"
+          commit="${commit//$'\n'/'%0A'}"
+          commit="${commit//$'\r'/'%0D'}"
+          echo "::set-output name=version::$version"
+          echo "::set-output name=commit::$commit"
       - name: Setup java
         uses: actions/setup-java@v1
         with:
@@ -73,7 +83,7 @@ jobs:
           if [ -z "$(git status -uno --porcelain)" ]; then
              echo "::set-output name=push::false"
           else
-             git commit -m "Generate SDK" -a
+             git commit -m "${{ steps.changelog.outputs.commit }}" -a
              echo "::set-output name=push::true"
           fi
         shell: bash
@@ -90,10 +100,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.${{ github.run_number }}
-          release_name: Release v1.0.${{ github.run_number }}
-          body: |
-            Generated automatically
+          tag_name: v${{ steps.changelog.outputs.version }}
+          release_name: Release v${{ steps.changelog.outputs.version }}
+          body: ${{ steps.changelog.outputs.commit }}
           draft: true
           prerelease: false
       - name: Delete artifacts
