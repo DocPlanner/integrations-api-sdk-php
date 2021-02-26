@@ -55,8 +55,8 @@ jobs:
       - name: Parse changelog
         id: changelog
         run: |
-          version="$(cat integrations-api.yaml | grep -Po '(?<=version:\s.)[a-zA-Z0-9.]*(?=.$)')"
-          commit="$(cat integrations-api.yaml | grep -Pzo "(?<=$version:\s>\n)[\s\S]*?[\r\n]{2}" | tr -s ' ')"
+          version="$(cat ${{ env.FILE_NAME }} | grep -Po '(?<=version:\s.)[a-zA-Z0-9.]*(?=.$)')"
+          commit="$(cat ${{ env.FILE_NAME }} | grep -Pzo "(?<=$version:\s>\n)[\s\S]*?[\r\n]{2}" | tr -s ' ')"
           commit="${commit//'%'/'%25'}"
           commit="${commit//$'\n'/'%0A'}"
           commit="${commit//$'\r'/'%0D'}"
