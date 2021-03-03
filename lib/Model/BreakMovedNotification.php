@@ -1,6 +1,6 @@
 <?php
 /**
- * BreakCreatedNotification
+ * BreakMovedNotification
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * BreakCreatedNotification Class Doc Comment
+ * BreakMovedNotification Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class BreakCreatedNotification implements ModelInterface, ArrayAccess
+class BreakMovedNotification implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class BreakCreatedNotification implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'BreakCreatedNotification';
+    protected static $swaggerModelName = 'BreakMovedNotification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
