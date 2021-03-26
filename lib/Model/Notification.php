@@ -162,14 +162,13 @@ class Notification implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const NAME_SLOT_CHANGED = 'slot-changed';
-const NAME_SLOT_BOOKING = 'slot-booking';
+    const NAME_SLOT_BOOKING = 'slot-booking';
 const NAME_SLOT_BOOKED = 'slot-booked';
 const NAME_BOOKING_CANCELED = 'booking-canceled';
 const NAME_BOOKING_MOVED = 'booking-moved';
 const NAME_BOOKING_MOVING = 'booking-moving';
-const NAME_SLOT_OVERBOOKED = 'slot-overbooked';
 const NAME_BREAK_CREATED = 'break-created';
+const NAME_BREAK_MOVED = 'break-moved';
 const NAME_BREAK_REMOVED = 'break-removed';
 const NAME_PRESENCE_MARKED = 'presence-marked';
 
@@ -181,14 +180,13 @@ const NAME_PRESENCE_MARKED = 'presence-marked';
     public function getNameAllowableValues()
     {
         return [
-            self::NAME_SLOT_CHANGED,
-self::NAME_SLOT_BOOKING,
+            self::NAME_SLOT_BOOKING,
 self::NAME_SLOT_BOOKED,
 self::NAME_BOOKING_CANCELED,
 self::NAME_BOOKING_MOVED,
 self::NAME_BOOKING_MOVING,
-self::NAME_SLOT_OVERBOOKED,
 self::NAME_BREAK_CREATED,
+self::NAME_BREAK_MOVED,
 self::NAME_BREAK_REMOVED,
 self::NAME_PRESENCE_MARKED,        ];
     }
