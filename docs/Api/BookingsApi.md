@@ -69,11 +69,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBooking**
-> \DocPlanner\Client\Model\Booking getBooking($facility_id, $doctor_id, $address_id, $booking_id, $with)
+> \DocPlanner\Client\Model\Booking getBooking($facility_id, $doctor_id, $address_id, $booking_id)
 
 
 
-View specific booking  Extensions: * `booking.patient` - with this parameter in url, query results will return patient data for specified booking * `booking.address_service` - with this parameter in url, query results will return address service for specified booking * `booking.presence` - with this parameter in url, query results will return additional information weather patient was present for specified booking
+View specific booking
 
 ### Example
 ```php
@@ -93,10 +93,9 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $booking_id = "booking_id_example"; // string | ID of the Booking
-$with = array(new \DocPlanner\Client\Model\BookingScopes()); // \DocPlanner\Client\Model\BookingScopes[] | 
 
 try {
-    $result = $apiInstance->getBooking($facility_id, $doctor_id, $address_id, $booking_id, $with);
+    $result = $apiInstance->getBooking($facility_id, $doctor_id, $address_id, $booking_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->getBooking: ', $e->getMessage(), PHP_EOL;
@@ -112,7 +111,6 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **booking_id** | **string**| ID of the Booking |
- **with** | [**\DocPlanner\Client\Model\BookingScopes[]**](../Model/\DocPlanner\Client\Model\BookingScopes.md)|  | [optional]
 
 ### Return type
 

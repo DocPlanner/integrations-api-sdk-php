@@ -210,7 +210,7 @@ $apiInstance = new DocPlanner\Client\Api\ServicesApi(
 $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
-$start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
+$start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request). Limits results to only those linked to slots that start on that date.
 
 try {
     $result = $apiInstance->getAddressServices($facility_id, $doctor_id, $address_id, $start);
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
  **facility_id** | **string**| ID of the Facility |
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
- **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) | [optional]
+ **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request). Limits results to only those linked to slots that start on that date. | [optional]
 
 ### Return type
 

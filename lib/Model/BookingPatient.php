@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAddressServiceRequest
+ * BookingPatient
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * UpdateAddressServiceRequest Class Doc Comment
+ * BookingPatient Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
+class BookingPatient implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UpdateAddressServiceRequest';
+    protected static $swaggerModelName = 'BookingPatient';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,14 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'is_price_from' => 'bool',
-'price' => 'int',
-'description' => 'string'    ];
+        'name' => 'string',
+'surname' => 'string',
+'email' => 'string',
+'phone' => 'string',
+'birth_date' => '\DateTime',
+'nin' => 'string',
+'gender' => 'string',
+'is_returnting' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +71,14 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'is_price_from' => null,
-'price' => null,
-'description' => null    ];
+        'name' => null,
+'surname' => null,
+'email' => null,
+'phone' => null,
+'birth_date' => 'date',
+'nin' => null,
+'gender' => null,
+'is_returnting' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +107,14 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'is_price_from' => 'is_price_from',
-'price' => 'price',
-'description' => 'description'    ];
+        'name' => 'name',
+'surname' => 'surname',
+'email' => 'email',
+'phone' => 'phone',
+'birth_date' => 'birth_date',
+'nin' => 'nin',
+'gender' => 'gender',
+'is_returnting' => 'is_returnting'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +122,14 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'is_price_from' => 'setIsPriceFrom',
-'price' => 'setPrice',
-'description' => 'setDescription'    ];
+        'name' => 'setName',
+'surname' => 'setSurname',
+'email' => 'setEmail',
+'phone' => 'setPhone',
+'birth_date' => 'setBirthDate',
+'nin' => 'setNin',
+'gender' => 'setGender',
+'is_returnting' => 'setIsReturnting'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +137,14 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'is_price_from' => 'getIsPriceFrom',
-'price' => 'getPrice',
-'description' => 'getDescription'    ];
+        'name' => 'getName',
+'surname' => 'getSurname',
+'email' => 'getEmail',
+'phone' => 'getPhone',
+'birth_date' => 'getBirthDate',
+'nin' => 'getNin',
+'gender' => 'getGender',
+'is_returnting' => 'getIsReturnting'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -162,7 +187,20 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
+    const GENDER_M = 'm';
+const GENDER_F = 'f';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGenderAllowableValues()
+    {
+        return [
+            self::GENDER_M,
+self::GENDER_F,        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -179,9 +217,14 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_price_from'] = isset($data['is_price_from']) ? $data['is_price_from'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
+        $this->container['birth_date'] = isset($data['birth_date']) ? $data['birth_date'] : null;
+        $this->container['nin'] = isset($data['nin']) ? $data['nin'] : null;
+        $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
+        $this->container['is_returnting'] = isset($data['is_returnting']) ? $data['is_returnting'] : null;
     }
 
     /**
@@ -192,6 +235,14 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getGenderAllowableValues();
+        if (!is_null($this->container['gender']) && !in_array($this->container['gender'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'gender', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -209,73 +260,202 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets is_price_from
-     *
-     * @return bool
-     */
-    public function getIsPriceFrom()
-    {
-        return $this->container['is_price_from'];
-    }
-
-    /**
-     * Sets is_price_from
-     *
-     * @param bool $is_price_from If the specified price is the minimum price of the service
-     *
-     * @return $this
-     */
-    public function setIsPriceFrom($is_price_from)
-    {
-        $this->container['is_price_from'] = $is_price_from;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return int
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param int $price Minimum price
-     *
-     * @return $this
-     */
-    public function setPrice($price)
-    {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets name
      *
      * @return string
      */
-    public function getDescription()
+    public function getName()
     {
-        return $this->container['description'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets description
+     * Sets name
      *
-     * @param string $description description
+     * @param string $name name
      *
      * @return $this
      */
-    public function setDescription($description)
+    public function setName($name)
     {
-        $this->container['description'] = $description;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets surname
+     *
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->container['surname'];
+    }
+
+    /**
+     * Sets surname
+     *
+     * @param string $surname surname
+     *
+     * @return $this
+     */
+    public function setSurname($surname)
+    {
+        $this->container['surname'] = $surname;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string $email email
+     *
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->container['phone'];
+    }
+
+    /**
+     * Sets phone
+     *
+     * @param string $phone phone
+     *
+     * @return $this
+     */
+    public function setPhone($phone)
+    {
+        $this->container['phone'] = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets birth_date
+     *
+     * @return \DateTime
+     */
+    public function getBirthDate()
+    {
+        return $this->container['birth_date'];
+    }
+
+    /**
+     * Sets birth_date
+     *
+     * @param \DateTime $birth_date birth_date
+     *
+     * @return $this
+     */
+    public function setBirthDate($birth_date)
+    {
+        $this->container['birth_date'] = $birth_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets nin
+     *
+     * @return string
+     */
+    public function getNin()
+    {
+        return $this->container['nin'];
+    }
+
+    /**
+     * Sets nin
+     *
+     * @param string $nin nin
+     *
+     * @return $this
+     */
+    public function setNin($nin)
+    {
+        $this->container['nin'] = $nin;
+
+        return $this;
+    }
+
+    /**
+     * Gets gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->container['gender'];
+    }
+
+    /**
+     * Sets gender
+     *
+     * @param string $gender gender
+     *
+     * @return $this
+     */
+    public function setGender($gender)
+    {
+        $allowedValues = $this->getGenderAllowableValues();
+        if (!is_null($gender) && !in_array($gender, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'gender', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['gender'] = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_returnting
+     *
+     * @return bool
+     */
+    public function getIsReturnting()
+    {
+        return $this->container['is_returnting'];
+    }
+
+    /**
+     * Sets is_returnting
+     *
+     * @param bool $is_returnting is_returnting
+     *
+     * @return $this
+     */
+    public function setIsReturnting($is_returnting)
+    {
+        $this->container['is_returnting'] = $is_returnting;
 
         return $this;
     }

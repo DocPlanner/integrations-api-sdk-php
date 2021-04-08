@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAddressServiceRequest
+ * Insurance
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * UpdateAddressServiceRequest Class Doc Comment
+ * Insurance Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
+class Insurance implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UpdateAddressServiceRequest';
+    protected static $swaggerModelName = 'Insurance';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,10 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'is_price_from' => 'bool',
-'price' => 'int',
-'description' => 'string'    ];
+        'id' => 'string',
+'name' => 'string',
+'plan' => 'string',
+'plan_id' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +67,10 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'is_price_from' => null,
-'price' => null,
-'description' => null    ];
+        'id' => null,
+'name' => null,
+'plan' => null,
+'plan_id' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +99,10 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'is_price_from' => 'is_price_from',
-'price' => 'price',
-'description' => 'description'    ];
+        'id' => 'id',
+'name' => 'name',
+'plan' => 'plan',
+'plan_id' => 'plan_id'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +110,10 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'is_price_from' => 'setIsPriceFrom',
-'price' => 'setPrice',
-'description' => 'setDescription'    ];
+        'id' => 'setId',
+'name' => 'setName',
+'plan' => 'setPlan',
+'plan_id' => 'setPlanId'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +121,10 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'is_price_from' => 'getIsPriceFrom',
-'price' => 'getPrice',
-'description' => 'getDescription'    ];
+        'id' => 'getId',
+'name' => 'getName',
+'plan' => 'getPlan',
+'plan_id' => 'getPlanId'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -179,9 +184,10 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_price_from'] = isset($data['is_price_from']) ? $data['is_price_from'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['plan'] = isset($data['plan']) ? $data['plan'] : null;
+        $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
     }
 
     /**
@@ -209,73 +215,97 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets is_price_from
-     *
-     * @return bool
-     */
-    public function getIsPriceFrom()
-    {
-        return $this->container['is_price_from'];
-    }
-
-    /**
-     * Sets is_price_from
-     *
-     * @param bool $is_price_from If the specified price is the minimum price of the service
-     *
-     * @return $this
-     */
-    public function setIsPriceFrom($is_price_from)
-    {
-        $this->container['is_price_from'] = $is_price_from;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return int
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param int $price Minimum price
-     *
-     * @return $this
-     */
-    public function setPrice($price)
-    {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets id
      *
      * @return string
      */
-    public function getDescription()
+    public function getId()
     {
-        return $this->container['description'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets description
+     * Sets id
      *
-     * @param string $description description
+     * @param string $id id
      *
      * @return $this
      */
-    public function setDescription($description)
+    public function setId($id)
     {
-        $this->container['description'] = $description;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan
+     *
+     * @return string
+     */
+    public function getPlan()
+    {
+        return $this->container['plan'];
+    }
+
+    /**
+     * Sets plan
+     *
+     * @param string $plan plan
+     *
+     * @return $this
+     */
+    public function setPlan($plan)
+    {
+        $this->container['plan'] = $plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan_id
+     *
+     * @return string
+     */
+    public function getPlanId()
+    {
+        return $this->container['plan_id'];
+    }
+
+    /**
+     * Sets plan_id
+     *
+     * @param string $plan_id plan_id
+     *
+     * @return $this
+     */
+    public function setPlanId($plan_id)
+    {
+        $this->container['plan_id'] = $plan_id;
 
         return $this;
     }

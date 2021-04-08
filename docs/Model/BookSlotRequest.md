@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_service_id** | **string** |  | 
-**is_returning** | **bool** |  | 
+**is_returning** | **bool** |  | [optional] 
 **patient** | [**\DocPlanner\Client\Model\Patient**](Patient.md) |  | 
 **duration** | **int** |  | 
 **send_notifications** | **bool** | Whether we should send visit notificatications | [optional] [default to true]
