@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**pullNotification**](APINotificationCallbacksApi.md#pullnotification) | **GET** /notifications | 
 [**pushNotifications**](APINotificationCallbacksApi.md#pushnotifications) | **POST** /{client-endpoint-url} | 
+[**releaseNotifications**](APINotificationCallbacksApi.md#releasenotifications) | **POST** /notifications/release | 
 
 # **pullNotification**
 > \DocPlanner\Client\Model\Notification pullNotification()
@@ -97,6 +98,54 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **releaseNotifications**
+> releaseNotifications()
+
+
+
+Action allowing to trigger re-dispatching all the notifications that were not processed correctly. Call to this endpoint should be repeated periodically to ensure consistency between systems. Docplanner API allows to perform notifications release once per hour. Endpoint can be used only if Docplanner system is pushing events to the external endpoints.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth 2.0
+$config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new DocPlanner\Client\Api\APINotificationCallbacksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $apiInstance->releaseNotifications();
+} catch (Exception $e) {
+    echo 'Exception when calling APINotificationCallbacksApi->releaseNotifications: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth 2.0](../../README.md#OAuth 2.0)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
