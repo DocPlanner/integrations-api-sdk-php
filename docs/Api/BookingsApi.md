@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**requestOpinion**](BookingsApi.md#requestopinion) | **PUT** /facilities/{facility_id}/doctors/{doctor_id}/opinion-request | 
 
 # **cancelBooking**
-> cancelBooking($facility_id, $doctor_id, $address_id, $booking_id)
+> cancelBooking($facility_id, $doctor_id, $address_id, $booking_id, $body)
 
 
 
@@ -35,9 +35,10 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $booking_id = "booking_id_example"; // string | ID of the Booking
+$body = new \DocPlanner\Client\Model\CancelBookingRequest(); // \DocPlanner\Client\Model\CancelBookingRequest | 
 
 try {
-    $apiInstance->cancelBooking($facility_id, $doctor_id, $address_id, $booking_id);
+    $apiInstance->cancelBooking($facility_id, $doctor_id, $address_id, $booking_id, $body);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->cancelBooking: ', $e->getMessage(), PHP_EOL;
 }
@@ -52,6 +53,7 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **booking_id** | **string**| ID of the Booking |
+ **body** | [**\DocPlanner\Client\Model\CancelBookingRequest**](../Model/CancelBookingRequest.md)|  | [optional]
 
 ### Return type
 
@@ -63,7 +65,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

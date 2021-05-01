@@ -1,6 +1,6 @@
 <?php
 /**
- * AddAddressInsuranceProviderRequest
+ * CancelBookingRequest
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AddAddressInsuranceProviderRequest Class Doc Comment
+ * CancelBookingRequest Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
+class CancelBookingRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AddAddressInsuranceProviderRequest';
+    protected static $swaggerModelName = 'CancelBookingRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,7 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'insurance_provider_id' => 'string'    ];
+        'send_notifications' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -64,7 +64,7 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'insurance_provider_id' => null    ];
+        'send_notifications' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -93,7 +93,7 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'insurance_provider_id' => 'insurance_provider_id'    ];
+        'send_notifications' => 'send_notifications'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,7 +101,7 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'insurance_provider_id' => 'setInsuranceProviderId'    ];
+        'send_notifications' => 'setSendNotifications'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -109,7 +109,7 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'insurance_provider_id' => 'getInsuranceProviderId'    ];
+        'send_notifications' => 'getSendNotifications'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -169,7 +169,7 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['insurance_provider_id'] = isset($data['insurance_provider_id']) ? $data['insurance_provider_id'] : null;
+        $this->container['send_notifications'] = isset($data['send_notifications']) ? $data['send_notifications'] : null;
     }
 
     /**
@@ -181,9 +181,6 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['insurance_provider_id'] === null) {
-            $invalidProperties[] = "'insurance_provider_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -200,25 +197,25 @@ class AddAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets insurance_provider_id
+     * Gets send_notifications
      *
-     * @return string
+     * @return bool
      */
-    public function getInsuranceProviderId()
+    public function getSendNotifications()
     {
-        return $this->container['insurance_provider_id'];
+        return $this->container['send_notifications'];
     }
 
     /**
-     * Sets insurance_provider_id
+     * Sets send_notifications
      *
-     * @param string $insurance_provider_id ID of an insurance provider from DP dictionary
+     * @param bool $send_notifications send_notifications
      *
      * @return $this
      */
-    public function setInsuranceProviderId($insurance_provider_id)
+    public function setSendNotifications($send_notifications)
     {
-        $this->container['insurance_provider_id'] = $insurance_provider_id;
+        $this->container['send_notifications'] = $send_notifications;
 
         return $this;
     }
