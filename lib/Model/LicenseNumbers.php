@@ -1,6 +1,6 @@
 <?php
 /**
- * SlotBookedNotificationData
+ * LicenseNumbers
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * SlotBookedNotificationData Class Doc Comment
+ * LicenseNumbers Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SlotBookedNotificationData implements ModelInterface, ArrayAccess
+class LicenseNumbers implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'SlotBookedNotification_data';
+    protected static $swaggerModelName = 'LicenseNumbers';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,10 +56,7 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'facility' => '\DocPlanner\Client\Model\Facility',
-'doctor' => '\DocPlanner\Client\Model\Doctor',
-'address' => '\DocPlanner\Client\Model\Address',
-'visit_booking' => '\DocPlanner\Client\Model\BookingNotification'    ];
+        '_items' => '\DocPlanner\Client\Model\LicenseNumber[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -67,10 +64,7 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'facility' => null,
-'doctor' => null,
-'address' => null,
-'visit_booking' => null    ];
+        '_items' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -99,10 +93,7 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'facility' => 'facility',
-'doctor' => 'doctor',
-'address' => 'address',
-'visit_booking' => 'visit_booking'    ];
+        '_items' => '_items'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -110,10 +101,7 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'facility' => 'setFacility',
-'doctor' => 'setDoctor',
-'address' => 'setAddress',
-'visit_booking' => 'setVisitBooking'    ];
+        '_items' => 'setItems'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -121,10 +109,7 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'facility' => 'getFacility',
-'doctor' => 'getDoctor',
-'address' => 'getAddress',
-'visit_booking' => 'getVisitBooking'    ];
+        '_items' => 'getItems'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -184,10 +169,7 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['facility'] = isset($data['facility']) ? $data['facility'] : null;
-        $this->container['doctor'] = isset($data['doctor']) ? $data['doctor'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['visit_booking'] = isset($data['visit_booking']) ? $data['visit_booking'] : null;
+        $this->container['_items'] = isset($data['_items']) ? $data['_items'] : null;
     }
 
     /**
@@ -215,97 +197,25 @@ class SlotBookedNotificationData implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets facility
+     * Gets _items
      *
-     * @return \DocPlanner\Client\Model\Facility
+     * @return \DocPlanner\Client\Model\LicenseNumber[]
      */
-    public function getFacility()
+    public function getItems()
     {
-        return $this->container['facility'];
+        return $this->container['_items'];
     }
 
     /**
-     * Sets facility
+     * Sets _items
      *
-     * @param \DocPlanner\Client\Model\Facility $facility facility
+     * @param \DocPlanner\Client\Model\LicenseNumber[] $_items _items
      *
      * @return $this
      */
-    public function setFacility($facility)
+    public function setItems($_items)
     {
-        $this->container['facility'] = $facility;
-
-        return $this;
-    }
-
-    /**
-     * Gets doctor
-     *
-     * @return \DocPlanner\Client\Model\Doctor
-     */
-    public function getDoctor()
-    {
-        return $this->container['doctor'];
-    }
-
-    /**
-     * Sets doctor
-     *
-     * @param \DocPlanner\Client\Model\Doctor $doctor doctor
-     *
-     * @return $this
-     */
-    public function setDoctor($doctor)
-    {
-        $this->container['doctor'] = $doctor;
-
-        return $this;
-    }
-
-    /**
-     * Gets address
-     *
-     * @return \DocPlanner\Client\Model\Address
-     */
-    public function getAddress()
-    {
-        return $this->container['address'];
-    }
-
-    /**
-     * Sets address
-     *
-     * @param \DocPlanner\Client\Model\Address $address address
-     *
-     * @return $this
-     */
-    public function setAddress($address)
-    {
-        $this->container['address'] = $address;
-
-        return $this;
-    }
-
-    /**
-     * Gets visit_booking
-     *
-     * @return \DocPlanner\Client\Model\BookingNotification
-     */
-    public function getVisitBooking()
-    {
-        return $this->container['visit_booking'];
-    }
-
-    /**
-     * Sets visit_booking
-     *
-     * @param \DocPlanner\Client\Model\BookingNotification $visit_booking visit_booking
-     *
-     * @return $this
-     */
-    public function setVisitBooking($visit_booking)
-    {
-        $this->container['visit_booking'] = $visit_booking;
+        $this->container['_items'] = $_items;
 
         return $this;
     }
