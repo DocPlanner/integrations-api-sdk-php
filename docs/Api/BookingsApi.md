@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **moveBooking**
-> moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id)
+> \DocPlanner\Client\Model\Booking moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id)
 
 
 
@@ -220,7 +220,8 @@ $address_id = "address_id_example"; // string | ID of a doctor`s address in a fa
 $booking_id = "booking_id_example"; // string | ID of the Booking
 
 try {
-    $apiInstance->moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id);
+    $result = $apiInstance->moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->moveBooking: ', $e->getMessage(), PHP_EOL;
 }
@@ -239,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\DocPlanner\Client\Model\Booking**](../Model/Booking.md)
 
 ### Authorization
 
@@ -248,7 +249,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.error+docplanner+json
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
