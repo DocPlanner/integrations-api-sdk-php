@@ -1,6 +1,6 @@
 <?php
 /**
- * Specializations
+ * PullMultipleNotificationsResponse
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * Specializations Class Doc Comment
+ * PullMultipleNotificationsResponse Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Specializations implements ModelInterface, ArrayAccess
+class PullMultipleNotificationsResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Specializations implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Specializations';
+    protected static $swaggerModelName = 'PullMultipleNotificationsResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class Specializations implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        '_items' => '\DocPlanner\Client\Model\Specialization[]'    ];
+        'notifications' => '\DocPlanner\Client\Model\Notification[]',
+'remaining' => 'int'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -64,7 +65,8 @@ class Specializations implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        '_items' => null    ];
+        'notifications' => null,
+'remaining' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -93,7 +95,8 @@ class Specializations implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        '_items' => '_items'    ];
+        'notifications' => 'notifications',
+'remaining' => 'remaining'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,7 +104,8 @@ class Specializations implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        '_items' => 'setItems'    ];
+        'notifications' => 'setNotifications',
+'remaining' => 'setRemaining'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -109,7 +113,8 @@ class Specializations implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        '_items' => 'getItems'    ];
+        'notifications' => 'getNotifications',
+'remaining' => 'getRemaining'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -169,7 +174,8 @@ class Specializations implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['_items'] = isset($data['_items']) ? $data['_items'] : null;
+        $this->container['notifications'] = isset($data['notifications']) ? $data['notifications'] : null;
+        $this->container['remaining'] = isset($data['remaining']) ? $data['remaining'] : null;
     }
 
     /**
@@ -197,25 +203,49 @@ class Specializations implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets _items
+     * Gets notifications
      *
-     * @return \DocPlanner\Client\Model\Specialization[]
+     * @return \DocPlanner\Client\Model\Notification[]
      */
-    public function getItems()
+    public function getNotifications()
     {
-        return $this->container['_items'];
+        return $this->container['notifications'];
     }
 
     /**
-     * Sets _items
+     * Sets notifications
      *
-     * @param \DocPlanner\Client\Model\Specialization[] $_items _items
+     * @param \DocPlanner\Client\Model\Notification[] $notifications notifications
      *
      * @return $this
      */
-    public function setItems($_items)
+    public function setNotifications($notifications)
     {
-        $this->container['_items'] = $_items;
+        $this->container['notifications'] = $notifications;
+
+        return $this;
+    }
+
+    /**
+     * Gets remaining
+     *
+     * @return int
+     */
+    public function getRemaining()
+    {
+        return $this->container['remaining'];
+    }
+
+    /**
+     * Sets remaining
+     *
+     * @param int $remaining remaining
+     *
+     * @return $this
+     */
+    public function setRemaining($remaining)
+    {
+        $this->container['remaining'] = $remaining;
 
         return $this;
     }

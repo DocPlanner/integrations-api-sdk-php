@@ -4,16 +4,70 @@ All URIs are relative to *https://www.{domain}/api/v3/integration*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**pullMultipleNotification**](APINotificationCallbacksApi.md#pullmultiplenotification) | **GET** /notifications/multiple | 
 [**pullNotification**](APINotificationCallbacksApi.md#pullnotification) | **GET** /notifications | 
 [**pushNotifications**](APINotificationCallbacksApi.md#pushnotifications) | **POST** /{client-endpoint-url} | 
 [**releaseNotifications**](APINotificationCallbacksApi.md#releasenotifications) | **POST** /notifications/release | 
+
+# **pullMultipleNotification**
+> \DocPlanner\Client\Model\PullMultipleNotificationsResponse pullMultipleNotification($limit)
+
+
+
+Pulling Notifications - You can pull multiple notifications via this endpoint. This page will respond to you with the earliest notifications you haven’t been pulled yet in the quantity limited by `limit` parameter. First In First Out (FIFO) principle applied here. This endpoint will respond with the collection of notifications and amount of remaining notifications. Important: Notifications that are not pulled in 72 hours are marked as expired and deleted from the system.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth 2.0
+$config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new DocPlanner\Client\Api\APINotificationCallbacksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$limit = 56; // int | Maximum number of notifications pulled. Can take value from 1 to 100. If not provided the default value of 1 is applied.
+
+try {
+    $result = $apiInstance->pullMultipleNotification($limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling APINotificationCallbacksApi->pullMultipleNotification: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| Maximum number of notifications pulled. Can take value from 1 to 100. If not provided the default value of 1 is applied. | [optional]
+
+### Return type
+
+[**\DocPlanner\Client\Model\PullMultipleNotificationsResponse**](../Model/PullMultipleNotificationsResponse.md)
+
+### Authorization
+
+[OAuth 2.0](../../README.md#OAuth 2.0)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pullNotification**
 > \DocPlanner\Client\Model\Notification pullNotification()
 
 
 
-Pulling Notifications - You can pull notifications via this endpoint. This page will respond to you with the earliest notification you haven’t been pulled yet. First In First Out (FIFO) principle applied here. This endpoint will respond with one notification per request until there aren’t any notifications left in the notification stack. Important: Notifications that are not pulled in 72 hours are marked as expired and deleted from the system.
+Pulling Notifications - You can pull notifications via this endpoint. This page will respond to you with the earliest notification you haven’t been pulled yet. First In First Out (FIFO) principle applied here. This endpoint will respond with one notification per request until there aren’t any notifications left in the notification queue. Important: Notifications that are not pulled in 72 hours are marked as expired and deleted from the system.
 
 ### Example
 ```php
