@@ -7,7 +7,9 @@ Method | HTTP request | Description
 [**addAddressInsuranceProvider**](InsurancesApi.md#addaddressinsuranceprovider) | **POST** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers | 
 [**deleteAddressInsuranceProvider**](InsurancesApi.md#deleteaddressinsuranceprovider) | **DELETE** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers/{insurance_provider} | 
 [**getAddressInsuranceProviders**](InsurancesApi.md#getaddressinsuranceproviders) | **GET** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers | 
+[**getInsurancePlans**](InsurancesApi.md#getinsuranceplans) | **GET** /insurance-providers/{insurance_provider_id}/plans | 
 [**getInsuranceProviders**](InsurancesApi.md#getinsuranceproviders) | **GET** /insurance-providers | 
+[**updateOrCreateAddressInsuranceProvider**](InsurancesApi.md#updateorcreateaddressinsuranceprovider) | **PUT** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers | 
 
 # **addAddressInsuranceProvider**
 > addAddressInsuranceProvider($body, $facility_id, $doctor_id, $address_id)
@@ -126,7 +128,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAddressInsuranceProviders**
-> \DocPlanner\Client\Model\InsuranceProviders getAddressInsuranceProviders($facility_id, $doctor_id, $address_id)
+> \DocPlanner\Client\Model\AddressInsuranceProviders getAddressInsuranceProviders($facility_id, $doctor_id, $address_id)
 
 
 
@@ -169,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\DocPlanner\Client\Model\InsuranceProviders**](../Model/InsuranceProviders.md)
+[**\DocPlanner\Client\Model\AddressInsuranceProviders**](../Model/AddressInsuranceProviders.md)
 
 ### Authorization
 
@@ -179,6 +181,55 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getInsurancePlans**
+> \DocPlanner\Client\Model\InsurancePlans getInsurancePlans()
+
+
+
+Get a list of available insurance plans for a given insurance provider
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth 2.0
+$config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new DocPlanner\Client\Api\InsurancesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getInsurancePlans();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InsurancesApi->getInsurancePlans: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\DocPlanner\Client\Model\InsurancePlans**](../Model/InsurancePlans.md)
+
+### Authorization
+
+[OAuth 2.0](../../README.md#OAuth 2.0)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -228,6 +279,64 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.docplanner+json; charset=UTF-8
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **updateOrCreateAddressInsuranceProvider**
+> updateOrCreateAddressInsuranceProvider($body, $facility_id, $doctor_id, $address_id)
+
+
+
+Updates or creates insurance provider for a given doctor address
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: OAuth 2.0
+$config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new DocPlanner\Client\Api\InsurancesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$body = new \DocPlanner\Client\Model\UpdateOrCreateAddressInsuranceProviderRequest(); // \DocPlanner\Client\Model\UpdateOrCreateAddressInsuranceProviderRequest | 
+$facility_id = "facility_id_example"; // string | ID of the Facility
+$doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
+$address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
+
+try {
+    $apiInstance->updateOrCreateAddressInsuranceProvider($body, $facility_id, $doctor_id, $address_id);
+} catch (Exception $e) {
+    echo 'Exception when calling InsurancesApi->updateOrCreateAddressInsuranceProvider: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\DocPlanner\Client\Model\UpdateOrCreateAddressInsuranceProviderRequest**](../Model/UpdateOrCreateAddressInsuranceProviderRequest.md)|  |
+ **facility_id** | **string**| ID of the Facility |
+ **doctor_id** | **string**| ID of a doctor in a facility |
+ **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth 2.0](../../README.md#OAuth 2.0)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
