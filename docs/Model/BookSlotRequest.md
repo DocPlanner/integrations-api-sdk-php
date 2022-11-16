@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **is_returning** | **bool** |  | [optional] 
 **patient** | [**\DocPlanner\Client\Model\Patient**](Patient.md) |  | 
 **duration** | **int** |  | 
-**send_notifications** | **bool** | Whether we should send visit notificatications | [optional] [default to true]
+**send_notifications** | **bool** | Whether we should send visit notificatications | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

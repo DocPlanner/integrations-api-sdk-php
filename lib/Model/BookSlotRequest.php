@@ -193,7 +193,7 @@ class BookSlotRequest implements ModelInterface, ArrayAccess
         $this->container['is_returning'] = isset($data['is_returning']) ? $data['is_returning'] : null;
         $this->container['patient'] = isset($data['patient']) ? $data['patient'] : null;
         $this->container['duration'] = isset($data['duration']) ? $data['duration'] : null;
-        $this->container['send_notifications'] = isset($data['send_notifications']) ? $data['send_notifications'] : true;
+        $this->container['send_notifications'] = isset($data['send_notifications']) ? $data['send_notifications'] : null;
     }
 
     /**

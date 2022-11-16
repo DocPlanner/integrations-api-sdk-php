@@ -175,7 +175,7 @@ class CancelBookingRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
-        $this->container['send_notifications'] = isset($data['send_notifications']) ? $data['send_notifications'] : true;
+        $this->container['send_notifications'] = isset($data['send_notifications']) ? $data['send_notifications'] : null;
     }
 
     /**
