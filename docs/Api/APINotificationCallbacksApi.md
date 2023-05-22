@@ -21,7 +21,7 @@ Pulling Notifications - You can pull multiple notifications via this endpoint. T
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\APINotificationCallbacksApi(
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -74,7 +74,7 @@ Pulling Notifications - You can pull notifications via this endpoint. This page 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\APINotificationCallbacksApi(
@@ -102,7 +102,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -167,7 +167,7 @@ Action allowing to trigger re-dispatching all the notifications that were not pr
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\APINotificationCallbacksApi(
@@ -194,7 +194,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

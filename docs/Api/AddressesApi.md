@@ -19,7 +19,7 @@ Get a single address of a doctor  Extensions: * `address.online_only` - with thi
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\AddressesApi(
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -78,7 +78,7 @@ Get a list of addresses of a doctor  Extensions: * `address.online_only` - with 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\AddressesApi(
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

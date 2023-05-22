@@ -12,14 +12,14 @@ Method | HTTP request | Description
 
 
 
-Get a single doctor in a facility  Extensions: * `doctor.addresses` - with this parameter in url, query results will return a list of all the doctor addresses in a given facility * `doctor.license_numbers` - with this parameter in url, query results will contain license numbers of doctors * `address.booking_extra_fields` - with this parameter in url, query results will return required parameters requested from patient in the booking flow * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if an address is dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating when visit payments are enabled
+Get a single doctor in a facility  Extensions: * `doctor.profile_url` - with this parameter in url, query results will contain urls to doctors profiles * `doctor.addresses` - with this parameter in url, query results will return a list of all the doctor addresses in a given facility * `doctor.license_numbers` - with this parameter in url, query results will contain license numbers of doctors * `address.booking_extra_fields` - with this parameter in url, query results will return required parameters requested from patient in the booking flow * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if an address is dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating when visit payments are enabled
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\DoctorsApi(
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -69,14 +69,14 @@ Name | Type | Description  | Notes
 
 
 
-Get a list of doctors in a facility  Extensions: * `doctor.specializations` - with this parameter in url, query results will contain specialization of doctors * `doctor.license_numbers` - with this parameter in url, query results will contain license numbers of doctors
+Get a list of doctors in a facility  Extensions: * `doctor.profile_url` - with this parameter in url, query results will contain urls to doctors profiles * `doctor.specializations` - with this parameter in url, query results will contain specialization of doctors * `doctor.license_numbers` - with this parameter in url, query results will contain license numbers of doctors
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\DoctorsApi(
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

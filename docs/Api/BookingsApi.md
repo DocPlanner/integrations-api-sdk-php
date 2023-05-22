@@ -22,7 +22,7 @@ Cancel the booking
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\BookingsApi(
@@ -61,7 +61,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ View specific booking
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\BookingsApi(
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -141,7 +141,7 @@ Get bookings list of a doctor in the facility  Extensions: * `booking.patient` -
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\BookingsApi(
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -204,7 +204,7 @@ Move booking for a doctor
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\BookingsApi(
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -265,7 +265,7 @@ After the visit was booked via clinics software, by calling this endpoint you ca
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\BookingsApi(
@@ -300,7 +300,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -21,7 +21,7 @@ Book a slot
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ Delete slots for the given date
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -119,7 +119,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -140,7 +140,7 @@ List of free slots for the address within specified date range  Extensions: * `s
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -203,7 +203,7 @@ Adds or replaces the slots. This will override all existing slots for given date
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\SlotsApi(
@@ -240,7 +240,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

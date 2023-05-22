@@ -5,7 +5,7 @@ All URIs are relative to *https://www.{domain}/api/v3/integration*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addAddressInsuranceProvider**](InsurancesApi.md#addaddressinsuranceprovider) | **POST** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers | 
-[**deleteAddressInsuranceProvider**](InsurancesApi.md#deleteaddressinsuranceprovider) | **DELETE** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers/{insurance_provider} | 
+[**deleteAddressInsuranceProvider**](InsurancesApi.md#deleteaddressinsuranceprovider) | **DELETE** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers/{insurance_provider_id} | 
 [**getAddressInsuranceProviders**](InsurancesApi.md#getaddressinsuranceproviders) | **GET** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/insurance-providers | 
 [**getInsurancePlans**](InsurancesApi.md#getinsuranceplans) | **GET** /insurance-providers/{insurance_provider_id}/plans | 
 [**getInsuranceProviders**](InsurancesApi.md#getinsuranceproviders) | **GET** /insurance-providers | 
@@ -23,7 +23,7 @@ Adds new insurance provider to an address of the doctor
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
@@ -60,7 +60,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -70,7 +70,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteAddressInsuranceProvider**
-> deleteAddressInsuranceProvider($facility_id, $doctor_id, $address_id, $insurance_provider)
+> deleteAddressInsuranceProvider($facility_id, $doctor_id, $address_id, $insurance_provider_id)
 
 
 
@@ -81,7 +81,7 @@ Delete an insurance provider from doctor’s address
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
@@ -93,10 +93,10 @@ $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
 $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
-$insurance_provider = "insurance_provider_example"; // string | ID of an insurance provider from DP dictionary
+$insurance_provider_id = "insurance_provider_id_example"; // string | ID of an insurance provider from DP dictionary
 
 try {
-    $apiInstance->deleteAddressInsuranceProvider($facility_id, $doctor_id, $address_id, $insurance_provider);
+    $apiInstance->deleteAddressInsuranceProvider($facility_id, $doctor_id, $address_id, $insurance_provider_id);
 } catch (Exception $e) {
     echo 'Exception when calling InsurancesApi->deleteAddressInsuranceProvider: ', $e->getMessage(), PHP_EOL;
 }
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
  **facility_id** | **string**| ID of the Facility |
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
- **insurance_provider** | **string**| ID of an insurance provider from DP dictionary |
+ **insurance_provider_id** | **string**| ID of an insurance provider from DP dictionary |
 
 ### Return type
 
@@ -118,7 +118,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Get a list of insurance providers for a specific address
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInsurancePlans**
-> \DocPlanner\Client\Model\InsurancePlans getInsurancePlans()
+> \DocPlanner\Client\Model\InsurancePlans getInsurancePlans($insurance_provider_id)
 
 
 
@@ -196,7 +196,7 @@ Get a list of available insurance plans for a given insurance provider
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
@@ -205,9 +205,10 @@ $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
     new GuzzleHttp\Client(),
     $config
 );
+$insurance_provider_id = "insurance_provider_id_example"; // string | ID of an insurance provider from DP dictionary
 
 try {
-    $result = $apiInstance->getInsurancePlans();
+    $result = $apiInstance->getInsurancePlans($insurance_provider_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InsurancesApi->getInsurancePlans: ', $e->getMessage(), PHP_EOL;
@@ -216,7 +217,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **insurance_provider_id** | **string**| ID of an insurance provider from DP dictionary |
 
 ### Return type
 
@@ -224,7 +228,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -245,7 +249,7 @@ Get a list of available insurance providers
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
@@ -273,7 +277,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -294,7 +298,7 @@ Updates or creates insurance provider for a given doctor address
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure OAuth2 access token for authorization: OAuth 2.0
+// Configure OAuth2 access token for authorization: oauth2
 $config = DocPlanner\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new DocPlanner\Client\Api\InsurancesApi(
@@ -331,7 +335,7 @@ void (empty response body)
 
 ### Authorization
 
-[OAuth 2.0](../../README.md#OAuth 2.0)
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
