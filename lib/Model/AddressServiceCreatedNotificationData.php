@@ -1,6 +1,6 @@
 <?php
 /**
- * Facility
+ * AddressServiceCreatedNotificationData
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * Facility Class Doc Comment
+ * AddressServiceCreatedNotificationData Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Facility implements ModelInterface, ArrayAccess
+class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Facility implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Facility';
+    protected static $swaggerModelName = 'AddressServiceCreatedNotification_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,7 @@ class Facility implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-'name' => 'string',
-'doctors' => '\DocPlanner\Client\Model\Doctors'    ];
+        'address_service' => '\DocPlanner\Client\Model\AddressService'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +64,7 @@ class Facility implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-'name' => null,
-'doctors' => null    ];
+        'address_service' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +93,7 @@ class Facility implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-'name' => 'name',
-'doctors' => 'doctors'    ];
+        'address_service' => 'address_service'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +101,7 @@ class Facility implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-'name' => 'setName',
-'doctors' => 'setDoctors'    ];
+        'address_service' => 'setAddressService'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +109,7 @@ class Facility implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-'name' => 'getName',
-'doctors' => 'getDoctors'    ];
+        'address_service' => 'getAddressService'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -179,9 +169,7 @@ class Facility implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['doctors'] = isset($data['doctors']) ? $data['doctors'] : null;
+        $this->container['address_service'] = isset($data['address_service']) ? $data['address_service'] : null;
     }
 
     /**
@@ -209,73 +197,25 @@ class Facility implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets address_service
      *
-     * @return string
+     * @return \DocPlanner\Client\Model\AddressService
      */
-    public function getId()
+    public function getAddressService()
     {
-        return $this->container['id'];
+        return $this->container['address_service'];
     }
 
     /**
-     * Sets id
+     * Sets address_service
      *
-     * @param string $id id
+     * @param \DocPlanner\Client\Model\AddressService $address_service address_service
      *
      * @return $this
      */
-    public function setId($id)
+    public function setAddressService($address_service)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets doctors
-     *
-     * @return \DocPlanner\Client\Model\Doctors
-     */
-    public function getDoctors()
-    {
-        return $this->container['doctors'];
-    }
-
-    /**
-     * Sets doctors
-     *
-     * @param \DocPlanner\Client\Model\Doctors $doctors doctors
-     *
-     * @return $this
-     */
-    public function setDoctors($doctors)
-    {
-        $this->container['doctors'] = $doctors;
+        $this->container['address_service'] = $address_service;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Facility
+ * AddressServiceCreatedNotification
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * Facility Class Doc Comment
+ * AddressServiceCreatedNotification Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Facility implements ModelInterface, ArrayAccess
+class AddressServiceCreatedNotification implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Facility implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Facility';
+    protected static $swaggerModelName = 'AddressServiceCreatedNotification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,9 @@ class Facility implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-'name' => 'string',
-'doctors' => '\DocPlanner\Client\Model\Doctors'    ];
+        'name' => 'string',
+'data' => '\DocPlanner\Client\Model\AddressServiceCreatedNotificationData',
+'created_at' => '\DateTime'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +66,9 @@ class Facility implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-'name' => null,
-'doctors' => null    ];
+        'name' => null,
+'data' => null,
+'created_at' => 'date-time'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +97,9 @@ class Facility implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-'name' => 'name',
-'doctors' => 'doctors'    ];
+        'name' => 'name',
+'data' => 'data',
+'created_at' => 'created_at'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +107,9 @@ class Facility implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-'name' => 'setName',
-'doctors' => 'setDoctors'    ];
+        'name' => 'setName',
+'data' => 'setData',
+'created_at' => 'setCreatedAt'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +117,9 @@ class Facility implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-'name' => 'getName',
-'doctors' => 'getDoctors'    ];
+        'name' => 'getName',
+'data' => 'getData',
+'created_at' => 'getCreatedAt'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -179,9 +179,9 @@ class Facility implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['doctors'] = isset($data['doctors']) ? $data['doctors'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
     }
 
     /**
@@ -209,30 +209,6 @@ class Facility implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -257,25 +233,49 @@ class Facility implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets doctors
+     * Gets data
      *
-     * @return \DocPlanner\Client\Model\Doctors
+     * @return \DocPlanner\Client\Model\AddressServiceCreatedNotificationData
      */
-    public function getDoctors()
+    public function getData()
     {
-        return $this->container['doctors'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets doctors
+     * Sets data
      *
-     * @param \DocPlanner\Client\Model\Doctors $doctors doctors
+     * @param \DocPlanner\Client\Model\AddressServiceCreatedNotificationData $data data
      *
      * @return $this
      */
-    public function setDoctors($doctors)
+    public function setData($data)
     {
-        $this->container['doctors'] = $doctors;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
