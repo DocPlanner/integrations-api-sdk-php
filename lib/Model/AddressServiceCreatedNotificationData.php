@@ -56,7 +56,10 @@ class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'address_service' => '\DocPlanner\Client\Model\AddressService'    ];
+        'facility' => '\DocPlanner\Client\Model\Facility',
+'doctor' => '\DocPlanner\Client\Model\Doctor',
+'address' => '\DocPlanner\Client\Model\Address',
+'address_service' => '\DocPlanner\Client\Model\AddressService'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -64,7 +67,10 @@ class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'address_service' => null    ];
+        'facility' => null,
+'doctor' => null,
+'address' => null,
+'address_service' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -93,7 +99,10 @@ class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'address_service' => 'address_service'    ];
+        'facility' => 'facility',
+'doctor' => 'doctor',
+'address' => 'address',
+'address_service' => 'address_service'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,7 +110,10 @@ class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'address_service' => 'setAddressService'    ];
+        'facility' => 'setFacility',
+'doctor' => 'setDoctor',
+'address' => 'setAddress',
+'address_service' => 'setAddressService'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -109,7 +121,10 @@ class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'address_service' => 'getAddressService'    ];
+        'facility' => 'getFacility',
+'doctor' => 'getDoctor',
+'address' => 'getAddress',
+'address_service' => 'getAddressService'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -169,6 +184,9 @@ class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
+        $this->container['facility'] = isset($data['facility']) ? $data['facility'] : null;
+        $this->container['doctor'] = isset($data['doctor']) ? $data['doctor'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['address_service'] = isset($data['address_service']) ? $data['address_service'] : null;
     }
 
@@ -195,6 +213,78 @@ class AddressServiceCreatedNotificationData implements ModelInterface, ArrayAcce
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets facility
+     *
+     * @return \DocPlanner\Client\Model\Facility
+     */
+    public function getFacility()
+    {
+        return $this->container['facility'];
+    }
+
+    /**
+     * Sets facility
+     *
+     * @param \DocPlanner\Client\Model\Facility $facility facility
+     *
+     * @return $this
+     */
+    public function setFacility($facility)
+    {
+        $this->container['facility'] = $facility;
+
+        return $this;
+    }
+
+    /**
+     * Gets doctor
+     *
+     * @return \DocPlanner\Client\Model\Doctor
+     */
+    public function getDoctor()
+    {
+        return $this->container['doctor'];
+    }
+
+    /**
+     * Sets doctor
+     *
+     * @param \DocPlanner\Client\Model\Doctor $doctor doctor
+     *
+     * @return $this
+     */
+    public function setDoctor($doctor)
+    {
+        $this->container['doctor'] = $doctor;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return \DocPlanner\Client\Model\Address
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param \DocPlanner\Client\Model\Address $address address
+     *
+     * @return $this
+     */
+    public function setAddress($address)
+    {
+        $this->container['address'] = $address;
+
+        return $this;
+    }
 
     /**
      * Gets address_service
