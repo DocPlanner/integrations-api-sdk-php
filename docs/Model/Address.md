@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **is_online_only** | **bool** |  | [optional] 
 **visit_payment** | **bool** |  | [optional] 
 **booking_extra_fields** | [**\DocPlanner\Client\Model\AddressBookingExtraFields**](AddressBookingExtraFields.md) |  | [optional] 
+**commercial_type** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

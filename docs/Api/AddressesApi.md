@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 
-Get a single address of a doctor  Extensions: * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if an address is dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating if visit payment isr enabled
+Get a single address of a doctor  Extensions: * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if an address is dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating if visit payment isr enabled   * `address.commercial_type` - with this parameter in url, query results will return additional parameter indicating address commercial type
 
 ### Example
 ```php
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 
 
-Get a list of addresses of a doctor  Extensions: * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if returned addresses are dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating if visit payments are enabled
+Get a list of addresses of a doctor  Extensions: * `address.online_only` - with this parameter in url, query results will return additional parameter indicating if returned addresses are dedicated to video consultations * `address.visit_payment` - with this parameter in url, query results will return additional parameter indicating if visit payments are enabled * `address.commercial_type` - with this parameter in url, query results will return additional parameter indicating address commercial type
 
 ### Example
 ```php
