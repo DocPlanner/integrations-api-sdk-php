@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateOrCreateAddressInsuranceProviderRequest
+ * Calendar
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * UpdateOrCreateAddressInsuranceProviderRequest Class Doc Comment
+ * Calendar Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, ArrayAccess
+class Calendar implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UpdateOrCreateAddressInsuranceProviderRequest';
+    protected static $swaggerModelName = 'Calendar';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,7 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'insurance_provider_id' => 'string',
-'insurance_plans' => '\DocPlanner\Client\Model\UpdateOrCreateAddressInsuranceProviderRequestInsurancePlans[]'    ];
+        'status' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +64,7 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'insurance_provider_id' => null,
-'insurance_plans' => null    ];
+        'status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +93,7 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
      * @var string[]
      */
     protected static $attributeMap = [
-        'insurance_provider_id' => 'insurance_provider_id',
-'insurance_plans' => 'insurance_plans'    ];
+        'status' => 'status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +101,7 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
      * @var string[]
      */
     protected static $setters = [
-        'insurance_provider_id' => 'setInsuranceProviderId',
-'insurance_plans' => 'setInsurancePlans'    ];
+        'status' => 'setStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +109,7 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
      * @var string[]
      */
     protected static $getters = [
-        'insurance_provider_id' => 'getInsuranceProviderId',
-'insurance_plans' => 'getInsurancePlans'    ];
+        'status' => 'getStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -157,7 +152,20 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
         return self::$swaggerModelName;
     }
 
-    
+    const STATUS_ENABLED = 'enabled';
+const STATUS_DISABLED = 'disabled';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_ENABLED,
+self::STATUS_DISABLED,        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -174,8 +182,7 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
      */
     public function __construct(array $data = null)
     {
-        $this->container['insurance_provider_id'] = isset($data['insurance_provider_id']) ? $data['insurance_provider_id'] : null;
-        $this->container['insurance_plans'] = isset($data['insurance_plans']) ? $data['insurance_plans'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -187,9 +194,14 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
     {
         $invalidProperties = [];
 
-        if ($this->container['insurance_provider_id'] === null) {
-            $invalidProperties[] = "'insurance_provider_id' can't be null";
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -206,49 +218,34 @@ class UpdateOrCreateAddressInsuranceProviderRequest implements ModelInterface, A
 
 
     /**
-     * Gets insurance_provider_id
+     * Gets status
      *
      * @return string
      */
-    public function getInsuranceProviderId()
+    public function getStatus()
     {
-        return $this->container['insurance_provider_id'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets insurance_provider_id
+     * Sets status
      *
-     * @param string $insurance_provider_id ID of an insurance provider from DP dictionary
+     * @param string $status status
      *
      * @return $this
      */
-    public function setInsuranceProviderId($insurance_provider_id)
+    public function setStatus($status)
     {
-        $this->container['insurance_provider_id'] = $insurance_provider_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets insurance_plans
-     *
-     * @return \DocPlanner\Client\Model\UpdateOrCreateAddressInsuranceProviderRequestInsurancePlans[]
-     */
-    public function getInsurancePlans()
-    {
-        return $this->container['insurance_plans'];
-    }
-
-    /**
-     * Sets insurance_plans
-     *
-     * @param \DocPlanner\Client\Model\UpdateOrCreateAddressInsuranceProviderRequestInsurancePlans[] $insurance_plans insurance_plans
-     *
-     * @return $this
-     */
-    public function setInsurancePlans($insurance_plans)
-    {
-        $this->container['insurance_plans'] = $insurance_plans;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
