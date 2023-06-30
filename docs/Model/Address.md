@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **visit_payment** | **bool** |  | [optional] 
 **booking_extra_fields** | [**\DocPlanner\Client\Model\AddressBookingExtraFields**](AddressBookingExtraFields.md) |  | [optional] 
 **commercial_type** | **string** |  | [optional] 
+**insurance_support** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

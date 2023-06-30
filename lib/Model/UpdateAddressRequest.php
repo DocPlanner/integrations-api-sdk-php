@@ -1,6 +1,6 @@
 <?php
 /**
- * Specialization
+ * UpdateAddressRequest
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * Specialization Class Doc Comment
+ * UpdateAddressRequest Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Specialization implements ModelInterface, ArrayAccess
+class UpdateAddressRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Specialization implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Specialization';
+    protected static $swaggerModelName = 'UpdateAddressRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,7 @@ class Specialization implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-'name' => 'string'    ];
+        'insurance_support' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +64,7 @@ class Specialization implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-'name' => null    ];
+        'insurance_support' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +93,7 @@ class Specialization implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-'name' => 'name'    ];
+        'insurance_support' => 'insurance_support'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +101,7 @@ class Specialization implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-'name' => 'setName'    ];
+        'insurance_support' => 'setInsuranceSupport'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +109,7 @@ class Specialization implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-'name' => 'getName'    ];
+        'insurance_support' => 'getInsuranceSupport'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -157,7 +152,22 @@ class Specialization implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
+    const INSURANCE_SUPPORT__PRIVATE = 'private';
+const INSURANCE_SUPPORT_INSURANCE = 'insurance';
+const INSURANCE_SUPPORT_PRIVATE_AND_INSURANCE = 'private_and_insurance';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getInsuranceSupportAllowableValues()
+    {
+        return [
+            self::INSURANCE_SUPPORT__PRIVATE,
+self::INSURANCE_SUPPORT_INSURANCE,
+self::INSURANCE_SUPPORT_PRIVATE_AND_INSURANCE,        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -174,8 +184,7 @@ class Specialization implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['insurance_support'] = isset($data['insurance_support']) ? $data['insurance_support'] : null;
     }
 
     /**
@@ -186,6 +195,14 @@ class Specialization implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getInsuranceSupportAllowableValues();
+        if (!is_null($this->container['insurance_support']) && !in_array($this->container['insurance_support'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'insurance_support', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -203,49 +220,34 @@ class Specialization implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets insurance_support
      *
      * @return string
      */
-    public function getId()
+    public function getInsuranceSupport()
     {
-        return $this->container['id'];
+        return $this->container['insurance_support'];
     }
 
     /**
-     * Sets id
+     * Sets insurance_support
      *
-     * @param string $id id
+     * @param string $insurance_support insurance_support
      *
      * @return $this
      */
-    public function setId($id)
+    public function setInsuranceSupport($insurance_support)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
+        $allowedValues = $this->getInsuranceSupportAllowableValues();
+        if (!is_null($insurance_support) && !in_array($insurance_support, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'insurance_support', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['insurance_support'] = $insurance_support;
 
         return $this;
     }
