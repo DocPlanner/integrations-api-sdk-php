@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **patient** | [**\DocPlanner\Client\Model\Patient**](Patient.md) |  | 
 **duration** | **int** |  | 
 **send_notifications** | **bool** | Whether we should send visit notificatications | [optional] 
+**label** | **string** |  | [optional] [default to 'null']
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
