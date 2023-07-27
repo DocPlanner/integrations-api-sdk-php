@@ -1,6 +1,6 @@
 <?php
 /**
- * AddCalendarBreakRequest
+ * AddressCommercialTypeChangedNotification
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AddCalendarBreakRequest Class Doc Comment
+ * AddressCommercialTypeChangedNotification Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
+class AddressCommercialTypeChangedNotification implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AddCalendarBreakRequest';
+    protected static $swaggerModelName = 'AddressCommercialTypeChangedNotification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'since' => '\DateTime',
-'till' => '\DateTime',
-'description' => 'string'    ];
+        'name' => 'string',
+'data' => '\DocPlanner\Client\Model\AddressCommercialTypeChangedNotificationData',
+'created_at' => '\DateTime'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +66,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'since' => 'date-time',
-'till' => 'date-time',
-'description' => null    ];
+        'name' => null,
+'data' => null,
+'created_at' => 'date-time'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +97,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'since' => 'since',
-'till' => 'till',
-'description' => 'description'    ];
+        'name' => 'name',
+'data' => 'data',
+'created_at' => 'created_at'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +107,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'since' => 'setSince',
-'till' => 'setTill',
-'description' => 'setDescription'    ];
+        'name' => 'setName',
+'data' => 'setData',
+'created_at' => 'setCreatedAt'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +117,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'since' => 'getSince',
-'till' => 'getTill',
-'description' => 'getDescription'    ];
+        'name' => 'getName',
+'data' => 'getData',
+'created_at' => 'getCreatedAt'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -179,9 +179,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['since'] = isset($data['since']) ? $data['since'] : null;
-        $this->container['till'] = isset($data['till']) ? $data['till'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
     }
 
     /**
@@ -193,12 +193,6 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['since'] === null) {
-            $invalidProperties[] = "'since' can't be null";
-        }
-        if ($this->container['till'] === null) {
-            $invalidProperties[] = "'till' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,73 +209,73 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets since
-     *
-     * @return \DateTime
-     */
-    public function getSince()
-    {
-        return $this->container['since'];
-    }
-
-    /**
-     * Sets since
-     *
-     * @param \DateTime $since since
-     *
-     * @return $this
-     */
-    public function setSince($since)
-    {
-        $this->container['since'] = $since;
-
-        return $this;
-    }
-
-    /**
-     * Gets till
-     *
-     * @return \DateTime
-     */
-    public function getTill()
-    {
-        return $this->container['till'];
-    }
-
-    /**
-     * Sets till
-     *
-     * @param \DateTime $till till
-     *
-     * @return $this
-     */
-    public function setTill($till)
-    {
-        $this->container['till'] = $till;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets name
      *
      * @return string
      */
-    public function getDescription()
+    public function getName()
     {
-        return $this->container['description'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets description
+     * Sets name
      *
-     * @param string $description description
+     * @param string $name name
      *
      * @return $this
      */
-    public function setDescription($description)
+    public function setName($name)
     {
-        $this->container['description'] = $description;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \DocPlanner\Client\Model\AddressCommercialTypeChangedNotificationData
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \DocPlanner\Client\Model\AddressCommercialTypeChangedNotificationData $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

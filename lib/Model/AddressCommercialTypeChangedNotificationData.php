@@ -1,6 +1,6 @@
 <?php
 /**
- * AddCalendarBreakRequest
+ * AddressCommercialTypeChangedNotificationData
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AddCalendarBreakRequest Class Doc Comment
+ * AddressCommercialTypeChangedNotificationData Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
+class AddressCommercialTypeChangedNotificationData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AddCalendarBreakRequest';
+    protected static $swaggerModelName = 'AddressCommercialTypeChangedNotification_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'since' => '\DateTime',
-'till' => '\DateTime',
-'description' => 'string'    ];
+        'facility' => '\DocPlanner\Client\Model\Facility',
+'doctor' => '\DocPlanner\Client\Model\Doctor',
+'address' => '\DocPlanner\Client\Model\Address'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +66,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'since' => 'date-time',
-'till' => 'date-time',
-'description' => null    ];
+        'facility' => null,
+'doctor' => null,
+'address' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +97,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'since' => 'since',
-'till' => 'till',
-'description' => 'description'    ];
+        'facility' => 'facility',
+'doctor' => 'doctor',
+'address' => 'address'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +107,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'since' => 'setSince',
-'till' => 'setTill',
-'description' => 'setDescription'    ];
+        'facility' => 'setFacility',
+'doctor' => 'setDoctor',
+'address' => 'setAddress'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +117,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'since' => 'getSince',
-'till' => 'getTill',
-'description' => 'getDescription'    ];
+        'facility' => 'getFacility',
+'doctor' => 'getDoctor',
+'address' => 'getAddress'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -179,9 +179,9 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['since'] = isset($data['since']) ? $data['since'] : null;
-        $this->container['till'] = isset($data['till']) ? $data['till'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['facility'] = isset($data['facility']) ? $data['facility'] : null;
+        $this->container['doctor'] = isset($data['doctor']) ? $data['doctor'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
     }
 
     /**
@@ -193,12 +193,6 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['since'] === null) {
-            $invalidProperties[] = "'since' can't be null";
-        }
-        if ($this->container['till'] === null) {
-            $invalidProperties[] = "'till' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,73 +209,73 @@ class AddCalendarBreakRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets since
+     * Gets facility
      *
-     * @return \DateTime
+     * @return \DocPlanner\Client\Model\Facility
      */
-    public function getSince()
+    public function getFacility()
     {
-        return $this->container['since'];
+        return $this->container['facility'];
     }
 
     /**
-     * Sets since
+     * Sets facility
      *
-     * @param \DateTime $since since
+     * @param \DocPlanner\Client\Model\Facility $facility facility
      *
      * @return $this
      */
-    public function setSince($since)
+    public function setFacility($facility)
     {
-        $this->container['since'] = $since;
+        $this->container['facility'] = $facility;
 
         return $this;
     }
 
     /**
-     * Gets till
+     * Gets doctor
      *
-     * @return \DateTime
+     * @return \DocPlanner\Client\Model\Doctor
      */
-    public function getTill()
+    public function getDoctor()
     {
-        return $this->container['till'];
+        return $this->container['doctor'];
     }
 
     /**
-     * Sets till
+     * Sets doctor
      *
-     * @param \DateTime $till till
+     * @param \DocPlanner\Client\Model\Doctor $doctor doctor
      *
      * @return $this
      */
-    public function setTill($till)
+    public function setDoctor($doctor)
     {
-        $this->container['till'] = $till;
+        $this->container['doctor'] = $doctor;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets address
      *
-     * @return string
+     * @return \DocPlanner\Client\Model\Address
      */
-    public function getDescription()
+    public function getAddress()
     {
-        return $this->container['description'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets description
+     * Sets address
      *
-     * @param string $description description
+     * @param \DocPlanner\Client\Model\Address $address address
      *
      * @return $this
      */
-    public function setDescription($description)
+    public function setAddress($address)
     {
-        $this->container['description'] = $description;
+        $this->container['address'] = $address;
 
         return $this;
     }
