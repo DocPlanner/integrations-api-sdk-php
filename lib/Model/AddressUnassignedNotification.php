@@ -1,6 +1,6 @@
 <?php
 /**
- * LicenseNumber
+ * AddressUnassignedNotification
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * LicenseNumber Class Doc Comment
+ * AddressUnassignedNotification Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LicenseNumber implements ModelInterface, ArrayAccess
+class AddressUnassignedNotification implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class LicenseNumber implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'LicenseNumber';
+    protected static $swaggerModelName = 'AddressUnassignedNotification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,9 @@ class LicenseNumber implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-'license_number' => 'string'    ];
+        'name' => 'string',
+'data' => '\DocPlanner\Client\Model\AddressCommercialTypeChangedNotificationData',
+'created_at' => '\DateTime'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +66,9 @@ class LicenseNumber implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-'license_number' => null    ];
+        'name' => null,
+'data' => null,
+'created_at' => 'date-time'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +97,9 @@ class LicenseNumber implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-'license_number' => 'license_number'    ];
+        'name' => 'name',
+'data' => 'data',
+'created_at' => 'created_at'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +107,9 @@ class LicenseNumber implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-'license_number' => 'setLicenseNumber'    ];
+        'name' => 'setName',
+'data' => 'setData',
+'created_at' => 'setCreatedAt'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +117,9 @@ class LicenseNumber implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-'license_number' => 'getLicenseNumber'    ];
+        'name' => 'getName',
+'data' => 'getData',
+'created_at' => 'getCreatedAt'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +179,9 @@ class LicenseNumber implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['license_number'] = isset($data['license_number']) ? $data['license_number'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
     }
 
     /**
@@ -203,49 +209,73 @@ class LicenseNumber implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets name
      *
      * @return string
      */
-    public function getId()
+    public function getName()
     {
-        return $this->container['id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets id
+     * Sets name
      *
-     * @param string $id id
+     * @param string $name name
      *
      * @return $this
      */
-    public function setId($id)
+    public function setName($name)
     {
-        $this->container['id'] = $id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets license_number
+     * Gets data
      *
-     * @return string
+     * @return \DocPlanner\Client\Model\AddressCommercialTypeChangedNotificationData
      */
-    public function getLicenseNumber()
+    public function getData()
     {
-        return $this->container['license_number'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets license_number
+     * Sets data
      *
-     * @param string $license_number license_number
+     * @param \DocPlanner\Client\Model\AddressCommercialTypeChangedNotificationData $data data
      *
      * @return $this
      */
-    public function setLicenseNumber($license_number)
+    public function setData($data)
     {
-        $this->container['license_number'] = $license_number;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

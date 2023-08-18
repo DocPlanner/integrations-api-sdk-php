@@ -130,11 +130,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBookings**
-> \DocPlanner\Client\Model\Bookings getBookings($facility_id, $doctor_id, $address_id, $start, $end, $with)
+> \DocPlanner\Client\Model\Bookings getBookings($facility_id, $doctor_id, $address_id, $start, $end, $page, $limit, $with)
 
 
 
-Get bookings list of a doctor in the facility  Extensions: * `booking.patient` - with this parameter in url, query results will return patient data for every booking * `booking.address_service` - with this parameter in url, query results will return address service for every booking * `booking.presence` - with this parameter in url, query results will return additional information weather patient was present for every booking
+Get bookings list of a doctor in the facility Passing the `page` parameter in the query string will enable pagination. Extensions: * `booking.patient` - with this parameter in url, query results will return patient data for every booking * `booking.address_service` - with this parameter in url, query results will return address service for every booking * `booking.presence` - with this parameter in url, query results will return additional information weather patient was present for every booking
 
 ### Example
 ```php
@@ -155,10 +155,12 @@ $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
 $end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
+$page = 56; // int | Page number to use for pagination. If not provided the pagination is not applied.
+$limit = 56; // int | Maximum number of items per page. If not provided the default value of 100 is applied if pagination is used.
 $with = array(new \DocPlanner\Client\Model\BookingsScopes()); // \DocPlanner\Client\Model\BookingsScopes[] | 
 
 try {
-    $result = $apiInstance->getBookings($facility_id, $doctor_id, $address_id, $start, $end, $with);
+    $result = $apiInstance->getBookings($facility_id, $doctor_id, $address_id, $start, $end, $page, $limit, $with);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->getBookings: ', $e->getMessage(), PHP_EOL;
@@ -175,6 +177,8 @@ Name | Type | Description  | Notes
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
  **end** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
+ **page** | **int**| Page number to use for pagination. If not provided the pagination is not applied. | [optional]
+ **limit** | **int**| Maximum number of items per page. If not provided the default value of 100 is applied if pagination is used. | [optional]
  **with** | [**\DocPlanner\Client\Model\BookingsScopes[]**](../Model/\DocPlanner\Client\Model\BookingsScopes.md)|  | [optional]
 
 ### Return type
