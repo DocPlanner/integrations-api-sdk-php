@@ -344,7 +344,7 @@ class BookSlotRequest implements ModelInterface, ArrayAccess
     /**
      * Sets send_notifications
      *
-     * @param bool $send_notifications Whether we should send visit notificatications
+     * @param bool $send_notifications Whether we should send visit notifications
      *
      * @return $this
      */
