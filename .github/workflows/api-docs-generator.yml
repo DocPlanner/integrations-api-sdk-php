@@ -3,6 +3,7 @@ name: PHP SDK Generator
 env:
   FETCH_CMD: 'wget https://znanylekarz.pl/openapi/integrations-api.yaml -d --header="X-OAS-INTEGRATIONS-TOKEN: ${{ secrets.OPENAPI_INTEGRATIONS_SPECIFICATION_TOKEN }}"'
   FILE_NAME: integrations-api.yaml
+  CODEGEN_TEMPLATES_FOLDER: swagger-codegen-templates
   BRANCH: develop
 
 on:
@@ -69,7 +70,7 @@ jobs:
       - name: Download swagger codegen
         run: wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar -O swagger-codegen-cli.jar
       - name: Generate SDK files
-        run: java -jar swagger-codegen-cli.jar generate --git-user-id=DocPlanner --git-repo-id integrations-api-sdk-php -DinvokerPackage=DocPlanner\\Client -i ${{ env.FILE_NAME }} -l php -o ./final/
+        run: java -jar swagger-codegen-cli.jar generate --git-user-id=DocPlanner --git-repo-id integrations-api-sdk-php -DinvokerPackage=DocPlanner\\Client -i ${{ env.FILE_NAME }} -l php -o ./final/ -t ${{ env.CODEGEN_TEMPLATES_FOLDER }}
       - name: Patch library files
         run: cp -r final/SwaggerClient-php/docs/* docs/
       - name: Patch docs files
