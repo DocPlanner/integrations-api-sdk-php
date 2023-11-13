@@ -3,7 +3,7 @@ name: PHP SDK Generator
 env:
   FETCH_CMD: 'wget https://znanylekarz.pl/openapi/integrations-api.yaml -d --header="X-OAS-INTEGRATIONS-TOKEN: ${{ secrets.OPENAPI_INTEGRATIONS_SPECIFICATION_TOKEN }}"'
   FILE_NAME: integrations-api.yaml
-  CODEGEN_TEMPLATES_FOLDER: swagger-codegen-templates
+  CODEGEN_TEMPLATES_FOLDER: .github/workflows/swagger-codegen-templates
   BRANCH: develop
 
 on:
