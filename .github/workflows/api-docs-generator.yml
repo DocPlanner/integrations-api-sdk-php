@@ -1,4 +1,4 @@
-name: PHP SDK Generator 2 (test)
+name: PHP SDK Generator
 
 env:
   FETCH_CMD: 'wget https://znanylekarz.pl/openapi/integrations-api.yaml -d --header="X-OAS-INTEGRATIONS-TOKEN: ${{ secrets.OPENAPI_INTEGRATIONS_SPECIFICATION_TOKEN }}"'
