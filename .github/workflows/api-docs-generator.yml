@@ -21,10 +21,6 @@ jobs:
     outputs:
       diff: ${{ steps.checksum.outputs.diff }}
     steps:
-      - name: List files in the repository
-        run: ls ${{ github.workspace }}
-      - name: Echo test
-        run: echo ${{ github.workspace }}
       - name: Fetch yaml specification file
         run: ${{ env.FETCH_CMD }}
       - name: Check cache
@@ -92,8 +88,48 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
+      - name: Push changes
+        if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.BRANCH }}
+      - name: Create Release
+        if: steps.commit.outputs.push == 'true'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.changelog.outputs.version }}
+          release_name: Release v${{ steps.changelog.outputs.version }}
+          body: ${{ steps.changelog.outputs.commit }}
+          draft: true
+          prerelease: false
       - name: Delete artifacts
         uses: geekyeggo/delete-artifact@v1
         with:
           name: specification
+      - name: Send Slack notification on success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: integrations_notifications
+          SLACK_COLOR: '#36a64f'
+          SLACK_ICON: https://github.com/swagger-api.png
+          SLACK_MESSAGE: 'PHP SDK generated. Release URL: ${{ steps.create_release.outputs.html_url }}'
+          SLACK_TITLE: Success
+          SLACK_USERNAME: Github Actions
+          SLACK_WEBHOOK: ${{ secrets.INTEGRATIONS_SLACK_WEBHOOK }}
+      - name: Send Slack notification on failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: integrations_notifications
+          SLACK_COLOR: '#cb2431'
+          SLACK_ICON: https://github.com/swagger-api.png
+          SLACK_MESSAGE: 'Failed to generate PHP SDK'
+          SLACK_TITLE: Failure
+          SLACK_USERNAME: Github Actions
+          SLACK_WEBHOOK: ${{ secrets.INTEGRATIONS_SLACK_WEBHOOK }}
 
