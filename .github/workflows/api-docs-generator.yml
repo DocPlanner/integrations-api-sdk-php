@@ -4,7 +4,7 @@ env:
   FETCH_CMD: 'wget https://znanylekarz.pl/openapi/integrations-api.yaml -d --header="X-OAS-INTEGRATIONS-TOKEN: ${{ secrets.OPENAPI_INTEGRATIONS_SPECIFICATION_TOKEN }}"'
   FILE_NAME: integrations-api.yaml
   CODEGEN_TEMPLATES_FOLDER: .github/workflows/swagger-codegen-templates
-  BRANCH: IN-633/guzzle-compatibility-issue
+  BRANCH: develop
 
 on:
   schedule:
@@ -34,14 +34,14 @@ jobs:
         if: steps.cache.outputs.cache-hit == 'true'
         run: echo "::set-output name=diff::true"
       - name: Generate specification artifacts
-        if: steps.checksum.outputs.diff == 'true'
+        if: steps.checksum.outputs.diff != 'true'
         uses: actions/upload-artifact@v2
         with:
           name: specification
           path: ${{ env.FILE_NAME }}
   generate:
     needs: diff
-    if: needs.diff.outputs.diff == 'true'
+    if: needs.diff.outputs.diff != 'true'
     name: Generate SDK
     runs-on: ubuntu-latest
     steps:
@@ -132,4 +132,3 @@ jobs:
           SLACK_TITLE: Failure
           SLACK_USERNAME: Github Actions
           SLACK_WEBHOOK: ${{ secrets.INTEGRATIONS_SLACK_WEBHOOK }}
-
