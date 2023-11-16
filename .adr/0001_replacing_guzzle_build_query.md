@@ -34,7 +34,7 @@ Using mustache templates in order to change the code generated is not a perfect 
 - - `ObjectSerializer.mustache`
     Copied from `swagger-codegen` repository and changed because I couldn't make the generator to create exactly same lines using `ObjectSerializer::toQueryValue`. It was creating them with only one parameter when we had two before but as I checked the second one was never used in our code anyway.
 
-Original mustache files that I was changing can be found in [swagger-codegen-original-templates](swagger-codegen-original-templates) folder together with a [reverse-mustaches.diff](swagger-codegen-original-templates/reverse-mustaches.diff) file that shows what exactly changed.
+Original mustache files that I was changing were taken from [here](https://github.com/swagger-api/swagger-codegen/tree/953805cb9eb750204c965a54ae326c4f308a68d2/modules/swagger-codegen/src/main/resources/php) and can be found in [swagger-codegen-original-templates](swagger-codegen-original-templates) folder together with a [reverse-mustaches.diff](swagger-codegen-original-templates/reverse-mustaches.diff) file that shows what exactly changed.
 
 
 
