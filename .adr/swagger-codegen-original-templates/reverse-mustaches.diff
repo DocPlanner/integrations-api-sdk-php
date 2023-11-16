@@ -1,0 +1,205 @@
+[1mdiff --git a/.github/workflows/swagger-codegen-templates/ObjectSerializer.mustache b/.github/workflows/swagger-codegen-templates/ObjectSerializer.mustache[m
+[1mindex f398a7a..dff5417 100644[m
+[1m--- a/.github/workflows/swagger-codegen-templates/ObjectSerializer.mustache[m
+[1m+++ b/.github/workflows/swagger-codegen-templates/ObjectSerializer.mustache[m
+[36m@@ -33,11 +33,12 @@[m [mclass ObjectSerializer[m
+      * Serialize data[m
+      *[m
+      * @param mixed  $data   the data to serialize[m
+[32m+[m[32m     * @param string $type   the SwaggerType of the data[m
+      * @param string $format the format of the Swagger type of the data[m
+      *[m
+      * @return string|object serialized form of $data[m
+      */[m
+[31m-    public static function sanitizeForSerialization($data, $format = null)[m
+[32m+[m[32m    public static function sanitizeForSerialization($data, $type = null, $format = null)[m
+     {[m
+         if (is_scalar($data) || null === $data) {[m
+             return $data;[m
+[36m@@ -48,6 +49,11 @@[m [mclass ObjectSerializer[m
+                 $data[$property] = self::sanitizeForSerialization($value);[m
+             }[m
+             return $data;[m
+[32m+[m[32m        } elseif ($data instanceof \stdClass) {[m
+[32m+[m[32m            foreach ($data as $property => $value) {[m
+[32m+[m[32m                $data->$property = self::sanitizeForSerialization($value);[m
+[32m+[m[32m            }[m
+[32m+[m[32m            return $data;[m
+         } elseif (is_object($data)) {[m
+             $values = [];[m
+             $formats = $data::swaggerFormats();[m
+[36m@@ -55,9 +61,9 @@[m [mclass ObjectSerializer[m
+                 $getter = $data::getters()[$property];[m
+                 $value = $data->$getter();[m
+                 if ($value !== null[m
+[31m-                    && !in_array($swaggerType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)[m
+[32m+[m[32m                    && !in_array($swaggerType, [{{&primitives}}], true)[m
+                     && method_exists($swaggerType, 'getAllowableEnumValues')[m
+[31m-                    && !in_array($value, $swaggerType::getAllowableEnumValues())) {[m
+[32m+[m[32m                    && !in_array($value, $swaggerType::getAllowableEnumValues(), true)) {[m
+                     $imploded = implode("', '", $swaggerType::getAllowableEnumValues());[m
+                     throw new \InvalidArgumentException("Invalid value for enum '$swaggerType', must be one of: '$imploded'");[m
+                 }[m
+[36m@@ -123,7 +129,7 @@[m [mclass ObjectSerializer[m
+     /**[m
+      * Take value and turn it into a string suitable for inclusion in[m
+      * the header. If it's a string, pass through unchanged[m
+[31m-     * If it's a datetime object, format it in RFC3339[m
+[32m+[m[32m     * If it's a datetime object, format it in ISO8601[m
+      *[m
+      * @param string $value a string which will be part of the header[m
+      *[m
+[36m@@ -137,7 +143,7 @@[m [mclass ObjectSerializer[m
+     /**[m
+      * Take value and turn it into a string suitable for inclusion in[m
+      * the http body (form parameter). If it's a string, pass through unchanged[m
+[31m-     * If it's a datetime object, format it in RFC3339[m
+[32m+[m[32m     * If it's a datetime object, format it in ISO8601[m
+      *[m
+      * @param string|\SplFileObject $value the value of the form parameter[m
+      *[m
+[36m@@ -251,7 +257,7 @@[m [mclass ObjectSerializer[m
+             } else {[m
+                 return null;[m
+             }[m
+[31m-        } elseif (in_array($class, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {[m
+[32m+[m[32m        } elseif (in_array($class, [{{&primitives}}], true)) {[m
+             settype($data, $class);[m
+             return $data;[m
+         } elseif ($class === '\SplFileObject') {[m
+[36m@@ -273,7 +279,7 @@[m [mclass ObjectSerializer[m
+ [m
+             return new \SplFileObject($filename, 'r');[m
+         } elseif (method_exists($class, 'getAllowableEnumValues')) {[m
+[31m-            if (!in_array($data, $class::getAllowableEnumValues())) {[m
+[32m+[m[32m            if (!in_array($data, $class::getAllowableEnumValues(), true)) {[m
+                 $imploded = implode("', '", $class::getAllowableEnumValues());[m
+                 throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");[m
+             }[m
+[36m@@ -282,7 +288,7 @@[m [mclass ObjectSerializer[m
+             // If a discriminator is defined and points to a valid subclass, use it.[m
+             $discriminator = $class::DISCRIMINATOR;[m
+             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {[m
+[31m-                $subclass = '{{invokerPackage}}\Model\\' . $data->{$discriminator};[m
+[32m+[m[32m                $subclass = '\{{invokerPackage}}\Model\\' . $data->{$discriminator};[m
+                 if (is_subclass_of($subclass, $class)) {[m
+                     $class = $subclass;[m
+                 }[m
+[1mdiff --git a/.github/workflows/swagger-codegen-templates/api.mustache b/.github/workflows/swagger-codegen-templates/api.mustache[m
+[1mindex 6d68d00..e0b01e1 100644[m
+[1m--- a/.github/workflows/swagger-codegen-templates/api.mustache[m
+[1m+++ b/.github/workflows/swagger-codegen-templates/api.mustache[m
+[36m@@ -93,7 +93,7 @@[m [muse {{invokerPackage}}\ObjectSerializer;[m
+      * @param  {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}[m
+ {{/allParams}}[m
+      *[m
+[31m-     * @throws \DocPlanner\Client\ApiException on non-2xx response[m
+[32m+[m[32m     * @throws \{{invokerPackage}}\ApiException on non-2xx response[m
+      * @throws \InvalidArgumentException[m
+      * @return {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}}[m
+      */[m
+[36m@@ -118,7 +118,7 @@[m [muse {{invokerPackage}}\ObjectSerializer;[m
+      * @param  {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}[m
+ {{/allParams}}[m
+      *[m
+[31m-     * @throws \DocPlanner\Client\ApiException on non-2xx response[m
+[32m+[m[32m     * @throws \{{invokerPackage}}\ApiException on non-2xx response[m
+      * @throws \InvalidArgumentException[m
+      * @return array of {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}null{{/returnType}}, HTTP status code, HTTP response headers (array of strings)[m
+      */[m
+[36m@@ -161,7 +161,7 @@[m [muse {{invokerPackage}}\ObjectSerializer;[m
+                 $content = $responseBody; //stream goes to serializer[m
+             } else {[m
+                 $content = $responseBody->getContents();[m
+[31m-                if (!in_array($returnType, ['string','integer','bool'])) {[m
+[32m+[m[32m                if ($returnType !== 'string') {[m
+                     $content = json_decode($content);[m
+                 }[m
+             }[m
+[36m@@ -426,9 +426,16 @@[m [muse {{invokerPackage}}\ObjectSerializer;[m
+         if (isset($_tempBody)) {[m
+             // $_tempBody is the method argument, if present[m
+             $httpBody = $_tempBody;[m
+[31m-            // \stdClass has no __toString(), so we should encode it manually[m
+[31m-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {[m
+[31m-                $httpBody = \GuzzleHttp\json_encode($httpBody);[m
+[32m+[m[41m            [m
+[32m+[m[32m            if($headers['Content-Type'] === 'application/json') {[m
+[32m+[m[32m                // \stdClass has no __toString(), so we should encode it manually[m
+[32m+[m[32m                if ($httpBody instanceof \stdClass) {[m
+[32m+[m[32m                    $httpBody = \GuzzleHttp\json_encode($httpBody);[m
+[32m+[m[32m                }[m
+[32m+[m[32m                // array has no __toString(), so we should encode it manually[m
+[32m+[m[32m                if(is_array($httpBody)) {[m
+[32m+[m[32m                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));[m
+[32m+[m[32m                }[m
+             }[m
+         } elseif (count($formParams) > 0) {[m
+             if ($multipart) {[m
+[36m@@ -447,7 +454,7 @@[m [muse {{invokerPackage}}\ObjectSerializer;[m
+ [m
+             } else {[m
+                 // for HTTP post (form)[m
+[31m-                $httpBody = $this->buildQuery($formParams);[m
+[32m+[m[32m                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);[m
+             }[m
+         }[m
+ [m
+[36m@@ -490,7 +497,7 @@[m [muse {{invokerPackage}}\ObjectSerializer;[m
+             $headers[m
+         );[m
+ [m
+[31m-        $query = $this->buildQuery($queryParams);[m
+[32m+[m[32m        $query = \GuzzleHttp\Psr7\Query::build($queryParams);[m
+         return new Request([m
+             '{{httpMethod}}',[m
+             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),[m
+[36m@@ -518,48 +525,5 @@[m [muse {{invokerPackage}}\ObjectSerializer;[m
+ [m
+         return $options;[m
+     }[m
+[31m-[m
+[31m-    protected function buildQuery($params, $encoding = PHP_QUERY_RFC3986)[m
+[31m-    {[m
+[31m-        if (!$params) {[m
+[31m-            return '';[m
+[31m-        }[m
+[31m-[m
+[31m-        if ($encoding === false) {[m
+[31m-            $encoder = function ($str) {[m
+[31m-                return $str;[m
+[31m-            };[m
+[31m-        } elseif ($encoding === PHP_QUERY_RFC3986) {[m
+[31m-            $encoder = 'rawurlencode';[m
+[31m-        } elseif ($encoding === PHP_QUERY_RFC1738) {[m
+[31m-            $encoder = 'urlencode';[m
+[31m-        } else {[m
+[31m-            throw new \InvalidArgumentException('Invalid type');[m
+[31m-        }[m
+[31m-[m
+[31m-        $qs = '';[m
+[31m-        foreach ($params as $k => $v) {[m
+[31m-            $k = $encoder((string) $k);[m
+[31m-            if (!is_array($v)) {[m
+[31m-                $qs .= $k;[m
+[31m-                $v = is_bool($v) ? (int) $v : $v;[m
+[31m-                if ($v !== null) {[m
+[31m-                    $qs .= '='.$encoder((string) $v);[m
+[31m-                }[m
+[31m-                $qs .= '&';[m
+[31m-            } else {[m
+[31m-                foreach ($v as $vv) {[m
+[31m-                    $qs .= $k;[m
+[31m-                    $vv = is_bool($vv) ? (int) $vv : $vv;[m
+[31m-                    if ($vv !== null) {[m
+[31m-                        $qs .= '='.$encoder((string) $vv);[m
+[31m-                    }[m
+[31m-                    $qs .= '&';[m
+[31m-                }[m
+[31m-            }[m
+[31m-        }[m
+[31m-[m
+[31m-        return $qs ? (string) substr($qs, 0, -1) : '';[m
+[31m-    }[m
+ }[m
+ {{/operations}}[m
