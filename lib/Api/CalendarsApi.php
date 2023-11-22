@@ -336,7 +336,7 @@ class CalendarsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = $this->buildQuery($formParams);
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
             }
         }
 
@@ -356,7 +356,7 @@ class CalendarsApi
             $headers
         );
 
-        $query = $this->buildQuery($queryParams);
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -623,7 +623,7 @@ class CalendarsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = $this->buildQuery($formParams);
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
             }
         }
 
@@ -643,7 +643,7 @@ class CalendarsApi
             $headers
         );
 
-        $query = $this->buildQuery($queryParams);
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -939,7 +939,7 @@ class CalendarsApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = $this->buildQuery($formParams);
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
             }
         }
 
@@ -959,7 +959,7 @@ class CalendarsApi
             $headers
         );
 
-        $query = $this->buildQuery($queryParams);
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -985,48 +985,5 @@ class CalendarsApi
         }
 
         return $options;
-    }
-
-    protected function buildQuery($params, $encoding = PHP_QUERY_RFC3986)
-    {
-        if (!$params) {
-            return '';
-        }
-
-        if ($encoding === false) {
-            $encoder = function ($str) {
-                return $str;
-            };
-        } elseif ($encoding === PHP_QUERY_RFC3986) {
-            $encoder = 'rawurlencode';
-        } elseif ($encoding === PHP_QUERY_RFC1738) {
-            $encoder = 'urlencode';
-        } else {
-            throw new \InvalidArgumentException('Invalid type');
-        }
-
-        $qs = '';
-        foreach ($params as $k => $v) {
-            $k = $encoder((string) $k);
-            if (!is_array($v)) {
-                $qs .= $k;
-                $v = is_bool($v) ? (int) $v : $v;
-                if ($v !== null) {
-                    $qs .= '='.$encoder((string) $v);
-                }
-                $qs .= '&';
-            } else {
-                foreach ($v as $vv) {
-                    $qs .= $k;
-                    $vv = is_bool($vv) ? (int) $vv : $vv;
-                    if ($vv !== null) {
-                        $qs .= '='.$encoder((string) $vv);
-                    }
-                    $qs .= '&';
-                }
-            }
-        }
-
-        return $qs ? (string) substr($qs, 0, -1) : '';
     }
 }

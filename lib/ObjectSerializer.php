@@ -117,15 +117,16 @@ class ObjectSerializer
      * later.
      *
      * @param string[]|string|\DateTime $object an object to be serialized to a string
+     * @param string|null $format the format of the parameter
      *
      * @return string the serialized object
      */
-    public static function toQueryValue($object)
+    public static function toQueryValue($object, $format = null)
     {
         if (is_array($object)) {
             return implode(',', $object);
         } else {
-            return self::toString($object);
+            return self::toString($object, $format);
         }
     }
 
@@ -164,16 +165,18 @@ class ObjectSerializer
     /**
      * Take value and turn it into a string suitable for inclusion in
      * the parameter. If it's a string, pass through unchanged
-     * If it's a datetime object, format it in ISO8601
+     * If it's a datetime object, format it in RFC3339
+     * If it's a date, format it in Y-m-d
      *
      * @param string|\DateTime $value the value of the parameter
+     * @param string|null $format the format of the parameter
      *
      * @return string the header string
      */
-    public static function toString($value)
+    public static function toString($value, $format = null)
     {
-        if ($value instanceof \DateTime) { // datetime in ISO8601 format
-            return $value->format(\DateTime::ATOM);
+        if ($value instanceof \DateTime) {
+            return ($format === 'date') ? $value->format('Y-m-d') : $value->format(\DateTime::ATOM);
         } else {
             return $value;
         }
@@ -291,7 +294,7 @@ class ObjectSerializer
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-                $subclass = 'DocPlanner\Client\Model\\' . $data->{$discriminator};
+                $subclass = '{{invokerPackage}}\Model\\' . $data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }
