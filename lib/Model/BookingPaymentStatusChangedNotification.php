@@ -1,6 +1,6 @@
 <?php
 /**
- * Patient
+ * BookingPaymentStatusChangedNotification
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * Patient Class Doc Comment
+ * BookingPaymentStatusChangedNotification Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Patient implements ModelInterface, ArrayAccess
+class BookingPaymentStatusChangedNotification implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Patient implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Patient';
+    protected static $swaggerModelName = 'BookingPaymentStatusChangedNotification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,8 @@ class Patient implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'name' => 'string',
-'surname' => 'string',
-'email' => 'string',
-'phone' => 'string',
-'birth_date' => '\DateTime',
-'nin' => 'string',
-'gender' => 'string',
-'marketing_consent' => 'bool',
-'data_privacy_consent' => 'bool'    ];
+'data' => '\DocPlanner\Client\Model\BookingPaymentStatusChangedNotificationData',
+'created_at' => '\DateTime'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -73,14 +67,8 @@ class Patient implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'name' => null,
-'surname' => null,
-'email' => null,
-'phone' => null,
-'birth_date' => 'date',
-'nin' => null,
-'gender' => null,
-'marketing_consent' => null,
-'data_privacy_consent' => null    ];
+'data' => null,
+'created_at' => 'date-time'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -110,14 +98,8 @@ class Patient implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'name' => 'name',
-'surname' => 'surname',
-'email' => 'email',
-'phone' => 'phone',
-'birth_date' => 'birth_date',
-'nin' => 'nin',
-'gender' => 'gender',
-'marketing_consent' => 'marketing_consent',
-'data_privacy_consent' => 'data_privacy_consent'    ];
+'data' => 'data',
+'created_at' => 'created_at'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -126,14 +108,8 @@ class Patient implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'name' => 'setName',
-'surname' => 'setSurname',
-'email' => 'setEmail',
-'phone' => 'setPhone',
-'birth_date' => 'setBirthDate',
-'nin' => 'setNin',
-'gender' => 'setGender',
-'marketing_consent' => 'setMarketingConsent',
-'data_privacy_consent' => 'setDataPrivacyConsent'    ];
+'data' => 'setData',
+'created_at' => 'setCreatedAt'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -142,14 +118,8 @@ class Patient implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'name' => 'getName',
-'surname' => 'getSurname',
-'email' => 'getEmail',
-'phone' => 'getPhone',
-'birth_date' => 'getBirthDate',
-'nin' => 'getNin',
-'gender' => 'getGender',
-'marketing_consent' => 'getMarketingConsent',
-'data_privacy_consent' => 'getDataPrivacyConsent'    ];
+'data' => 'getData',
+'created_at' => 'getCreatedAt'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -192,20 +162,7 @@ class Patient implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const GENDER_M = 'm';
-const GENDER_F = 'f';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getGenderAllowableValues()
-    {
-        return [
-            self::GENDER_M,
-self::GENDER_F,        ];
-    }
+    
 
     /**
      * Associative array for storing property values
@@ -223,14 +180,8 @@ self::GENDER_F,        ];
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
-        $this->container['birth_date'] = isset($data['birth_date']) ? $data['birth_date'] : null;
-        $this->container['nin'] = isset($data['nin']) ? $data['nin'] : null;
-        $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
-        $this->container['marketing_consent'] = isset($data['marketing_consent']) ? $data['marketing_consent'] : null;
-        $this->container['data_privacy_consent'] = isset($data['data_privacy_consent']) ? $data['data_privacy_consent'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
     }
 
     /**
@@ -241,20 +192,6 @@ self::GENDER_F,        ];
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['phone'] === null) {
-            $invalidProperties[] = "'phone' can't be null";
-        }
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!is_null($this->container['gender']) && !in_array($this->container['gender'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'gender', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -296,202 +233,49 @@ self::GENDER_F,        ];
     }
 
     /**
-     * Gets surname
+     * Gets data
      *
-     * @return string
+     * @return \DocPlanner\Client\Model\BookingPaymentStatusChangedNotificationData
      */
-    public function getSurname()
+    public function getData()
     {
-        return $this->container['surname'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets surname
+     * Sets data
      *
-     * @param string $surname surname
+     * @param \DocPlanner\Client\Model\BookingPaymentStatusChangedNotificationData $data data
      *
      * @return $this
      */
-    public function setSurname($surname)
+    public function setData($data)
     {
-        $this->container['surname'] = $surname;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string $email email
-     *
-     * @return $this
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->container['phone'];
-    }
-
-    /**
-     * Sets phone
-     *
-     * @param string $phone phone
-     *
-     * @return $this
-     */
-    public function setPhone($phone)
-    {
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets birth_date
+     * Gets created_at
      *
      * @return \DateTime
      */
-    public function getBirthDate()
+    public function getCreatedAt()
     {
-        return $this->container['birth_date'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets birth_date
+     * Sets created_at
      *
-     * @param \DateTime $birth_date birth_date
+     * @param \DateTime $created_at created_at
      *
      * @return $this
      */
-    public function setBirthDate($birth_date)
+    public function setCreatedAt($created_at)
     {
-        $this->container['birth_date'] = $birth_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets nin
-     *
-     * @return string
-     */
-    public function getNin()
-    {
-        return $this->container['nin'];
-    }
-
-    /**
-     * Sets nin
-     *
-     * @param string $nin nin
-     *
-     * @return $this
-     */
-    public function setNin($nin)
-    {
-        $this->container['nin'] = $nin;
-
-        return $this;
-    }
-
-    /**
-     * Gets gender
-     *
-     * @return string
-     */
-    public function getGender()
-    {
-        return $this->container['gender'];
-    }
-
-    /**
-     * Sets gender
-     *
-     * @param string $gender gender
-     *
-     * @return $this
-     */
-    public function setGender($gender)
-    {
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!is_null($gender) && !in_array($gender, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'gender', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['gender'] = $gender;
-
-        return $this;
-    }
-
-    /**
-     * Gets marketing_consent
-     *
-     * @return bool
-     */
-    public function getMarketingConsent()
-    {
-        return $this->container['marketing_consent'];
-    }
-
-    /**
-     * Sets marketing_consent
-     *
-     * @param bool $marketing_consent marketing_consent
-     *
-     * @return $this
-     */
-    public function setMarketingConsent($marketing_consent)
-    {
-        $this->container['marketing_consent'] = $marketing_consent;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_privacy_consent
-     *
-     * @return bool
-     */
-    public function getDataPrivacyConsent()
-    {
-        return $this->container['data_privacy_consent'];
-    }
-
-    /**
-     * Sets data_privacy_consent
-     *
-     * @param bool $data_privacy_consent data_privacy_consent
-     *
-     * @return $this
-     */
-    public function setDataPrivacyConsent($data_privacy_consent)
-    {
-        $this->container['data_privacy_consent'] = $data_privacy_consent;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * AddressService
+ * BookingPaymentStatusChangedNotificationDataVisitPaymentStatus
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AddressService Class Doc Comment
+ * BookingPaymentStatusChangedNotificationDataVisitPaymentStatus Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddressService implements ModelInterface, ArrayAccess
+class BookingPaymentStatusChangedNotificationDataVisitPaymentStatus implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class AddressService implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AddressService';
+    protected static $swaggerModelName = 'BookingPaymentStatusChangedNotification_data_visit_payment_status';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,15 +56,9 @@ class AddressService implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-'name' => 'string',
-'price' => 'int',
-'is_price_from' => 'bool',
-'is_default' => 'bool',
-'service_id' => 'string',
-'description' => 'string',
-'duration' => 'int',
-'is_visible' => 'bool'    ];
+        'status_from' => 'string',
+'status_to' => 'string',
+'changed_at' => '\DateTime'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -72,15 +66,9 @@ class AddressService implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-'name' => null,
-'price' => null,
-'is_price_from' => null,
-'is_default' => null,
-'service_id' => null,
-'description' => null,
-'duration' => null,
-'is_visible' => null    ];
+        'status_from' => null,
+'status_to' => null,
+'changed_at' => 'date-time'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -109,15 +97,9 @@ class AddressService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-'name' => 'name',
-'price' => 'price',
-'is_price_from' => 'is_price_from',
-'is_default' => 'is_default',
-'service_id' => 'service_id',
-'description' => 'description',
-'duration' => 'duration',
-'is_visible' => 'is_visible'    ];
+        'status_from' => 'status_from',
+'status_to' => 'status_to',
+'changed_at' => 'changed_at'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -125,15 +107,9 @@ class AddressService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-'name' => 'setName',
-'price' => 'setPrice',
-'is_price_from' => 'setIsPriceFrom',
-'is_default' => 'setIsDefault',
-'service_id' => 'setServiceId',
-'description' => 'setDescription',
-'duration' => 'setDuration',
-'is_visible' => 'setIsVisible'    ];
+        'status_from' => 'setStatusFrom',
+'status_to' => 'setStatusTo',
+'changed_at' => 'setChangedAt'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -141,15 +117,9 @@ class AddressService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-'name' => 'getName',
-'price' => 'getPrice',
-'is_price_from' => 'getIsPriceFrom',
-'is_default' => 'getIsDefault',
-'service_id' => 'getServiceId',
-'description' => 'getDescription',
-'duration' => 'getDuration',
-'is_visible' => 'getIsVisible'    ];
+        'status_from' => 'getStatusFrom',
+'status_to' => 'getStatusTo',
+'changed_at' => 'getChangedAt'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -209,15 +179,9 @@ class AddressService implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['is_price_from'] = isset($data['is_price_from']) ? $data['is_price_from'] : null;
-        $this->container['is_default'] = isset($data['is_default']) ? $data['is_default'] : null;
-        $this->container['service_id'] = isset($data['service_id']) ? $data['service_id'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['duration'] = isset($data['duration']) ? $data['duration'] : null;
-        $this->container['is_visible'] = isset($data['is_visible']) ? $data['is_visible'] : null;
+        $this->container['status_from'] = isset($data['status_from']) ? $data['status_from'] : null;
+        $this->container['status_to'] = isset($data['status_to']) ? $data['status_to'] : null;
+        $this->container['changed_at'] = isset($data['changed_at']) ? $data['changed_at'] : null;
     }
 
     /**
@@ -245,217 +209,73 @@ class AddressService implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets status_from
      *
      * @return string
      */
-    public function getId()
+    public function getStatusFrom()
     {
-        return $this->container['id'];
+        return $this->container['status_from'];
     }
 
     /**
-     * Sets id
+     * Sets status_from
      *
-     * @param string $id id
+     * @param string $status_from status_from
      *
      * @return $this
      */
-    public function setId($id)
+    public function setStatusFrom($status_from)
     {
-        $this->container['id'] = $id;
+        $this->container['status_from'] = $status_from;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets status_to
      *
      * @return string
      */
-    public function getName()
+    public function getStatusTo()
     {
-        return $this->container['name'];
+        return $this->container['status_to'];
     }
 
     /**
-     * Sets name
+     * Sets status_to
      *
-     * @param string $name name
+     * @param string $status_to status_to
      *
      * @return $this
      */
-    public function setName($name)
+    public function setStatusTo($status_to)
     {
-        $this->container['name'] = $name;
+        $this->container['status_to'] = $status_to;
 
         return $this;
     }
 
     /**
-     * Gets price
+     * Gets changed_at
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getPrice()
+    public function getChangedAt()
     {
-        return $this->container['price'];
+        return $this->container['changed_at'];
     }
 
     /**
-     * Sets price
+     * Sets changed_at
      *
-     * @param int $price price
+     * @param \DateTime $changed_at changed_at
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setChangedAt($changed_at)
     {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_price_from
-     *
-     * @return bool
-     */
-    public function getIsPriceFrom()
-    {
-        return $this->container['is_price_from'];
-    }
-
-    /**
-     * Sets is_price_from
-     *
-     * @param bool $is_price_from is_price_from
-     *
-     * @return $this
-     */
-    public function setIsPriceFrom($is_price_from)
-    {
-        $this->container['is_price_from'] = $is_price_from;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_default
-     *
-     * @return bool
-     */
-    public function getIsDefault()
-    {
-        return $this->container['is_default'];
-    }
-
-    /**
-     * Sets is_default
-     *
-     * @param bool $is_default is_default
-     *
-     * @return $this
-     */
-    public function setIsDefault($is_default)
-    {
-        $this->container['is_default'] = $is_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string $service_id service_id
-     *
-     * @return $this
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description description
-     *
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets duration
-     *
-     * @return int
-     */
-    public function getDuration()
-    {
-        return $this->container['duration'];
-    }
-
-    /**
-     * Sets duration
-     *
-     * @param int $duration duration
-     *
-     * @return $this
-     */
-    public function setDuration($duration)
-    {
-        $this->container['duration'] = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_visible
-     *
-     * @return bool
-     */
-    public function getIsVisible()
-    {
-        return $this->container['is_visible'];
-    }
-
-    /**
-     * Sets is_visible
-     *
-     * @param bool $is_visible is_visible
-     *
-     * @return $this
-     */
-    public function setIsVisible($is_visible)
-    {
-        $this->container['is_visible'] = $is_visible;
+        $this->container['changed_at'] = $changed_at;
 
         return $this;
     }

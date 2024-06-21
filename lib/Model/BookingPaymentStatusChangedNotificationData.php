@@ -1,6 +1,6 @@
 <?php
 /**
- * AddressService
+ * BookingPaymentStatusChangedNotificationData
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AddressService Class Doc Comment
+ * BookingPaymentStatusChangedNotificationData Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddressService implements ModelInterface, ArrayAccess
+class BookingPaymentStatusChangedNotificationData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class AddressService implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AddressService';
+    protected static $swaggerModelName = 'BookingPaymentStatusChangedNotification_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,15 +56,11 @@ class AddressService implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-'name' => 'string',
-'price' => 'int',
-'is_price_from' => 'bool',
-'is_default' => 'bool',
-'service_id' => 'string',
-'description' => 'string',
-'duration' => 'int',
-'is_visible' => 'bool'    ];
+        'facility' => '\DocPlanner\Client\Model\Facility',
+'doctor' => '\DocPlanner\Client\Model\Doctor',
+'address' => '\DocPlanner\Client\Model\Address',
+'visit_booking' => '\DocPlanner\Client\Model\BookingNotification',
+'visit_payment_status' => '\DocPlanner\Client\Model\BookingPaymentStatusChangedNotificationDataVisitPaymentStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -72,15 +68,11 @@ class AddressService implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-'name' => null,
-'price' => null,
-'is_price_from' => null,
-'is_default' => null,
-'service_id' => null,
-'description' => null,
-'duration' => null,
-'is_visible' => null    ];
+        'facility' => null,
+'doctor' => null,
+'address' => null,
+'visit_booking' => null,
+'visit_payment_status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -109,15 +101,11 @@ class AddressService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-'name' => 'name',
-'price' => 'price',
-'is_price_from' => 'is_price_from',
-'is_default' => 'is_default',
-'service_id' => 'service_id',
-'description' => 'description',
-'duration' => 'duration',
-'is_visible' => 'is_visible'    ];
+        'facility' => 'facility',
+'doctor' => 'doctor',
+'address' => 'address',
+'visit_booking' => 'visit_booking',
+'visit_payment_status' => 'visit_payment_status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -125,15 +113,11 @@ class AddressService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-'name' => 'setName',
-'price' => 'setPrice',
-'is_price_from' => 'setIsPriceFrom',
-'is_default' => 'setIsDefault',
-'service_id' => 'setServiceId',
-'description' => 'setDescription',
-'duration' => 'setDuration',
-'is_visible' => 'setIsVisible'    ];
+        'facility' => 'setFacility',
+'doctor' => 'setDoctor',
+'address' => 'setAddress',
+'visit_booking' => 'setVisitBooking',
+'visit_payment_status' => 'setVisitPaymentStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -141,15 +125,11 @@ class AddressService implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-'name' => 'getName',
-'price' => 'getPrice',
-'is_price_from' => 'getIsPriceFrom',
-'is_default' => 'getIsDefault',
-'service_id' => 'getServiceId',
-'description' => 'getDescription',
-'duration' => 'getDuration',
-'is_visible' => 'getIsVisible'    ];
+        'facility' => 'getFacility',
+'doctor' => 'getDoctor',
+'address' => 'getAddress',
+'visit_booking' => 'getVisitBooking',
+'visit_payment_status' => 'getVisitPaymentStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -209,15 +189,11 @@ class AddressService implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['is_price_from'] = isset($data['is_price_from']) ? $data['is_price_from'] : null;
-        $this->container['is_default'] = isset($data['is_default']) ? $data['is_default'] : null;
-        $this->container['service_id'] = isset($data['service_id']) ? $data['service_id'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['duration'] = isset($data['duration']) ? $data['duration'] : null;
-        $this->container['is_visible'] = isset($data['is_visible']) ? $data['is_visible'] : null;
+        $this->container['facility'] = isset($data['facility']) ? $data['facility'] : null;
+        $this->container['doctor'] = isset($data['doctor']) ? $data['doctor'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['visit_booking'] = isset($data['visit_booking']) ? $data['visit_booking'] : null;
+        $this->container['visit_payment_status'] = isset($data['visit_payment_status']) ? $data['visit_payment_status'] : null;
     }
 
     /**
@@ -245,217 +221,121 @@ class AddressService implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets facility
      *
-     * @return string
+     * @return \DocPlanner\Client\Model\Facility
      */
-    public function getId()
+    public function getFacility()
     {
-        return $this->container['id'];
+        return $this->container['facility'];
     }
 
     /**
-     * Sets id
+     * Sets facility
      *
-     * @param string $id id
+     * @param \DocPlanner\Client\Model\Facility $facility facility
      *
      * @return $this
      */
-    public function setId($id)
+    public function setFacility($facility)
     {
-        $this->container['id'] = $id;
+        $this->container['facility'] = $facility;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets doctor
      *
-     * @return string
+     * @return \DocPlanner\Client\Model\Doctor
      */
-    public function getName()
+    public function getDoctor()
     {
-        return $this->container['name'];
+        return $this->container['doctor'];
     }
 
     /**
-     * Sets name
+     * Sets doctor
      *
-     * @param string $name name
+     * @param \DocPlanner\Client\Model\Doctor $doctor doctor
      *
      * @return $this
      */
-    public function setName($name)
+    public function setDoctor($doctor)
     {
-        $this->container['name'] = $name;
+        $this->container['doctor'] = $doctor;
 
         return $this;
     }
 
     /**
-     * Gets price
+     * Gets address
      *
-     * @return int
+     * @return \DocPlanner\Client\Model\Address
      */
-    public function getPrice()
+    public function getAddress()
     {
-        return $this->container['price'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets price
+     * Sets address
      *
-     * @param int $price price
+     * @param \DocPlanner\Client\Model\Address $address address
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setAddress($address)
     {
-        $this->container['price'] = $price;
+        $this->container['address'] = $address;
 
         return $this;
     }
 
     /**
-     * Gets is_price_from
+     * Gets visit_booking
      *
-     * @return bool
+     * @return \DocPlanner\Client\Model\BookingNotification
      */
-    public function getIsPriceFrom()
+    public function getVisitBooking()
     {
-        return $this->container['is_price_from'];
+        return $this->container['visit_booking'];
     }
 
     /**
-     * Sets is_price_from
+     * Sets visit_booking
      *
-     * @param bool $is_price_from is_price_from
+     * @param \DocPlanner\Client\Model\BookingNotification $visit_booking visit_booking
      *
      * @return $this
      */
-    public function setIsPriceFrom($is_price_from)
+    public function setVisitBooking($visit_booking)
     {
-        $this->container['is_price_from'] = $is_price_from;
+        $this->container['visit_booking'] = $visit_booking;
 
         return $this;
     }
 
     /**
-     * Gets is_default
+     * Gets visit_payment_status
      *
-     * @return bool
+     * @return \DocPlanner\Client\Model\BookingPaymentStatusChangedNotificationDataVisitPaymentStatus
      */
-    public function getIsDefault()
+    public function getVisitPaymentStatus()
     {
-        return $this->container['is_default'];
+        return $this->container['visit_payment_status'];
     }
 
     /**
-     * Sets is_default
+     * Sets visit_payment_status
      *
-     * @param bool $is_default is_default
+     * @param \DocPlanner\Client\Model\BookingPaymentStatusChangedNotificationDataVisitPaymentStatus $visit_payment_status visit_payment_status
      *
      * @return $this
      */
-    public function setIsDefault($is_default)
+    public function setVisitPaymentStatus($visit_payment_status)
     {
-        $this->container['is_default'] = $is_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_id
-     *
-     * @return string
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param string $service_id service_id
-     *
-     * @return $this
-     */
-    public function setServiceId($service_id)
-    {
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description description
-     *
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets duration
-     *
-     * @return int
-     */
-    public function getDuration()
-    {
-        return $this->container['duration'];
-    }
-
-    /**
-     * Sets duration
-     *
-     * @param int $duration duration
-     *
-     * @return $this
-     */
-    public function setDuration($duration)
-    {
-        $this->container['duration'] = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_visible
-     *
-     * @return bool
-     */
-    public function getIsVisible()
-    {
-        return $this->container['is_visible'];
-    }
-
-    /**
-     * Sets is_visible
-     *
-     * @param bool $is_visible is_visible
-     *
-     * @return $this
-     */
-    public function setIsVisible($is_visible)
-    {
-        $this->container['is_visible'] = $is_visible;
+        $this->container['visit_payment_status'] = $visit_payment_status;
 
         return $this;
     }
