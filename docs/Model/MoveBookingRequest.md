@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address_service_id** | **string** |  | 
-**start** | [**\DateTime**](\DateTime.md) |  | 
+**start** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **duration** | **int** |  | [optional] 
 **address_id** | **string** |  | [optional] 
 
