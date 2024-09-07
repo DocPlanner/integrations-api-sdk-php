@@ -63,7 +63,7 @@ class BookingPatient implements ModelInterface, ArrayAccess
 'birth_date' => '\DateTime',
 'nin' => 'string',
 'gender' => 'string',
-'is_returnting' => 'bool'    ];
+'is_returning' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -78,7 +78,7 @@ class BookingPatient implements ModelInterface, ArrayAccess
 'birth_date' => 'date',
 'nin' => null,
 'gender' => null,
-'is_returnting' => null    ];
+'is_returning' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -114,7 +114,7 @@ class BookingPatient implements ModelInterface, ArrayAccess
 'birth_date' => 'birth_date',
 'nin' => 'nin',
 'gender' => 'gender',
-'is_returnting' => 'is_returnting'    ];
+'is_returning' => 'is_returning'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -129,7 +129,7 @@ class BookingPatient implements ModelInterface, ArrayAccess
 'birth_date' => 'setBirthDate',
 'nin' => 'setNin',
 'gender' => 'setGender',
-'is_returnting' => 'setIsReturnting'    ];
+'is_returning' => 'setIsReturning'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -144,7 +144,7 @@ class BookingPatient implements ModelInterface, ArrayAccess
 'birth_date' => 'getBirthDate',
 'nin' => 'getNin',
 'gender' => 'getGender',
-'is_returnting' => 'getIsReturnting'    ];
+'is_returning' => 'getIsReturning'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -224,7 +224,7 @@ self::GENDER_F,        ];
         $this->container['birth_date'] = isset($data['birth_date']) ? $data['birth_date'] : null;
         $this->container['nin'] = isset($data['nin']) ? $data['nin'] : null;
         $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
-        $this->container['is_returnting'] = isset($data['is_returnting']) ? $data['is_returnting'] : null;
+        $this->container['is_returning'] = isset($data['is_returning']) ? $data['is_returning'] : null;
     }
 
     /**
@@ -437,25 +437,25 @@ self::GENDER_F,        ];
     }
 
     /**
-     * Gets is_returnting
+     * Gets is_returning
      *
      * @return bool
      */
-    public function getIsReturnting()
+    public function getIsReturning()
     {
-        return $this->container['is_returnting'];
+        return $this->container['is_returning'];
     }
 
     /**
-     * Sets is_returnting
+     * Sets is_returning
      *
-     * @param bool $is_returnting is_returnting
+     * @param bool $is_returning is_returning
      *
      * @return $this
      */
-    public function setIsReturnting($is_returnting)
+    public function setIsReturning($is_returning)
     {
-        $this->container['is_returnting'] = $is_returnting;
+        $this->container['is_returning'] = $is_returning;
 
         return $this;
     }

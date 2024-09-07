@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **birth_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **nin** | **string** |  | [optional] 
 **gender** | **string** |  | [optional] 
-**is_returnting** | **bool** |  | [optional] 
+**is_returning** | **bool** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
