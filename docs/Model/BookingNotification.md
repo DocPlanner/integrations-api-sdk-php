@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **canceled_by** | **string** |  | [optional] 
 **booked_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **canceled_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
-**address_service** | [**\DocPlanner\Client\Model\AddressServiceNotification**](AddressServiceNotification.md) |  | [optional] 
+**address_service** | [**AllOfBookingNotificationAddressService**](AllOfBookingNotificationAddressService.md) |  | [optional] 
 **patient** | [**\DocPlanner\Client\Model\Patient**](Patient.md) |  | [optional] 
 **signature** | **string** |  | [optional] 
 **comment** | **string** |  | [optional] 
-**insurance** | [**\DocPlanner\Client\Model\InsuranceNotification**](InsuranceNotification.md) |  | [optional] 
+**insurance** | [**AllOfBookingNotificationInsurance**](AllOfBookingNotificationInsurance.md) |  | [optional] 
 **visit_payment** | **bool** |  | [optional] 
 **videocall_url** | **string** |  | [optional] 
 

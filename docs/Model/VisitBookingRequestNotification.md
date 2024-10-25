@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **duration** | **int** |  | [optional] 
 **start_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **end_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
-**address_service** | [**\DocPlanner\Client\Model\AddressServiceNotification**](AddressServiceNotification.md) |  | [optional] 
+**address_service** | [**AllOfVisitBookingRequestNotificationAddressService**](AllOfVisitBookingRequestNotificationAddressService.md) |  | [optional] 
 **patient** | [**\DocPlanner\Client\Model\Patient**](Patient.md) |  | [optional] 
 **signature** | **string** |  | [optional] 
 **comment** | **string** |  | [optional] 
