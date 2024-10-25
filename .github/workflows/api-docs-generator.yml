@@ -25,7 +25,7 @@ jobs:
         run: ${{ env.FETCH_CMD }}
       - name: Check cache
         id: cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ env.FILE_NAME }}
           key: oas--${{ hashFiles(env.FILE_NAME) }}
@@ -35,7 +35,7 @@ jobs:
         run: echo "::set-output name=diff::true"
       - name: Generate specification artifacts
         if: steps.checksum.outputs.diff != 'true'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: specification
           path: ${{ env.FILE_NAME }}
@@ -46,11 +46,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ env.BRANCH }}
       - name: Download specification artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: specification
       - name: Parse changelog
@@ -107,7 +107,7 @@ jobs:
           draft: true
           prerelease: false
       - name: Delete artifacts
-        uses: geekyeggo/delete-artifact@v1
+        uses: geekyeggo/delete-artifact@v4
         with:
           name: specification
       - name: Send Slack notification on success
