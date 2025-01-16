@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **price** | **int** | Minimum price | [optional] 
 **description** | **string** |  | [optional] 
 **default_duration** | **int** |  | [optional] 
+**is_visible** | **bool** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
