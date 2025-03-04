@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **send_notifications** | **bool** | Whether we should send visit notifications | [optional] 
 **label** | **string** |  | [optional] [default to 'null']
 **comment** | **string** |  | [optional] [default to 'null']
+**insurance_provider_id** | **string** |  | [optional] [default to 'null']
+**insurance_plan_id** | **string** |  | [optional] [default to 'null']
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
