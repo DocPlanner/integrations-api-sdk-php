@@ -176,6 +176,14 @@ class PatientPresenceApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -475,6 +483,14 @@ class PatientPresenceApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\DocPlanner\Client\Model\Error',
