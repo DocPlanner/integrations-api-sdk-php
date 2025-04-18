@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**insurance_provider_id** | **string** |  | [optional] 
+**id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **plan** | **string** |  | [optional] 
 **plan_id** | **string** |  | [optional] 
