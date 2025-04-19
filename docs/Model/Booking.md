@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **canceled_by** | **string** |  | [optional] 
 **booked_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **canceled_at** | [**\DateTime**](\DateTime.md) |  | [optional] 
+**moving** | [**AllOfBookingMoving**](AllOfBookingMoving.md) |  | [optional] 
 **patient** | [**\DocPlanner\Client\Model\BookingPatient**](BookingPatient.md) |  | [optional] 
 **address_service** | [**AllOfBookingAddressService**](AllOfBookingAddressService.md) |  | [optional] 
 **comment** | **string** |  | [optional] 

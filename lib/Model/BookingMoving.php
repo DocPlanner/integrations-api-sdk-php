@@ -1,6 +1,6 @@
 <?php
 /**
- * Addresses
+ * BookingMoving
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * Addresses Class Doc Comment
+ * BookingMoving Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Addresses implements ModelInterface, ArrayAccess
+class BookingMoving implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class Addresses implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Addresses';
+    protected static $swaggerModelName = 'BookingMoving';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class Addresses implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        '_items' => '\DocPlanner\Client\Model\Address[]'    ];
+        'origin_booking_id' => 'string',
+'newest_booking_id' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -64,7 +65,8 @@ class Addresses implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        '_items' => null    ];
+        'origin_booking_id' => null,
+'newest_booking_id' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -93,7 +95,8 @@ class Addresses implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        '_items' => '_items'    ];
+        'origin_booking_id' => 'origin_booking_id',
+'newest_booking_id' => 'newest_booking_id'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,7 +104,8 @@ class Addresses implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        '_items' => 'setItems'    ];
+        'origin_booking_id' => 'setOriginBookingId',
+'newest_booking_id' => 'setNewestBookingId'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -109,7 +113,8 @@ class Addresses implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        '_items' => 'getItems'    ];
+        'origin_booking_id' => 'getOriginBookingId',
+'newest_booking_id' => 'getNewestBookingId'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -169,7 +174,8 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['_items'] = isset($data['_items']) ? $data['_items'] : null;
+        $this->container['origin_booking_id'] = isset($data['origin_booking_id']) ? $data['origin_booking_id'] : null;
+        $this->container['newest_booking_id'] = isset($data['newest_booking_id']) ? $data['newest_booking_id'] : null;
     }
 
     /**
@@ -197,25 +203,49 @@ class Addresses implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets _items
+     * Gets origin_booking_id
      *
-     * @return \DocPlanner\Client\Model\Address[]
+     * @return string
      */
-    public function getItems()
+    public function getOriginBookingId()
     {
-        return $this->container['_items'];
+        return $this->container['origin_booking_id'];
     }
 
     /**
-     * Sets _items
+     * Sets origin_booking_id
      *
-     * @param \DocPlanner\Client\Model\Address[] $_items _items
+     * @param string $origin_booking_id origin_booking_id
      *
      * @return $this
      */
-    public function setItems($_items)
+    public function setOriginBookingId($origin_booking_id)
     {
-        $this->container['_items'] = $_items;
+        $this->container['origin_booking_id'] = $origin_booking_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets newest_booking_id
+     *
+     * @return string
+     */
+    public function getNewestBookingId()
+    {
+        return $this->container['newest_booking_id'];
+    }
+
+    /**
+     * Sets newest_booking_id
+     *
+     * @param string $newest_booking_id newest_booking_id
+     *
+     * @return $this
+     */
+    public function setNewestBookingId($newest_booking_id)
+    {
+        $this->container['newest_booking_id'] = $newest_booking_id;
 
         return $this;
     }

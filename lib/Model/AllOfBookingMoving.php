@@ -1,6 +1,6 @@
 <?php
 /**
- * Addresses
+ * AllOfBookingMoving
  *
  * PHP version 5
  *
@@ -27,19 +27,17 @@
  */
 
 namespace DocPlanner\Client\Model;
-
-use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * Addresses Class Doc Comment
+ * AllOfBookingMoving Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Addresses implements ModelInterface, ArrayAccess
+class AllOfBookingMoving extends BookingMoving 
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +46,7 @@ class Addresses implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Addresses';
+    protected static $swaggerModelName = 'AllOfBookingMoving';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +54,7 @@ class Addresses implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        '_items' => '\DocPlanner\Client\Model\Address[]'    ];
+            ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -64,7 +62,7 @@ class Addresses implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        '_items' => null    ];
+            ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -73,7 +71,7 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes;
+        return self::$swaggerTypes + parent::swaggerTypes();
     }
 
     /**
@@ -83,7 +81,7 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats;
+        return self::$swaggerFormats + parent::swaggerFormats();
     }
 
     /**
@@ -93,7 +91,7 @@ class Addresses implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        '_items' => '_items'    ];
+            ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -101,7 +99,7 @@ class Addresses implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        '_items' => 'setItems'    ];
+            ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -109,7 +107,7 @@ class Addresses implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        '_items' => 'getItems'    ];
+            ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -119,7 +117,7 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -129,7 +127,7 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -139,7 +137,7 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -154,12 +152,6 @@ class Addresses implements ModelInterface, ArrayAccess
 
     
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /**
      * Constructor
@@ -169,7 +161,8 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['_items'] = isset($data['_items']) ? $data['_items'] : null;
+        parent::__construct($data);
+
     }
 
     /**
@@ -179,7 +172,7 @@ class Addresses implements ModelInterface, ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         return $invalidProperties;
     }
@@ -195,30 +188,6 @@ class Addresses implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets _items
-     *
-     * @return \DocPlanner\Client\Model\Address[]
-     */
-    public function getItems()
-    {
-        return $this->container['_items'];
-    }
-
-    /**
-     * Sets _items
-     *
-     * @param \DocPlanner\Client\Model\Address[] $_items _items
-     *
-     * @return $this
-     */
-    public function setItems($_items)
-    {
-        $this->container['_items'] = $_items;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

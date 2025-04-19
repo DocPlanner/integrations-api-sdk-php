@@ -71,11 +71,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBooking**
-> \DocPlanner\Client\Model\Booking getBooking($facility_id, $doctor_id, $address_id, $booking_id)
+> \DocPlanner\Client\Model\Booking getBooking($facility_id, $doctor_id, $address_id, $booking_id, $with)
 
 
 
-View specific booking
+View specific booking.  Extensions: * `booking.moving` - with this parameter in url, query results will return moving data (origin and newest booking ids) as long as the booking was created after 2nd April 2025 (otherwise it will return null); for bookings that were not moved, origin and newest booking ids will be equal the id of a booking requested
 
 ### Example
 ```php
@@ -95,9 +95,10 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $booking_id = "booking_id_example"; // string | ID of the Booking
+$with = array(new \DocPlanner\Client\Model\BookingScopes()); // \DocPlanner\Client\Model\BookingScopes[] | 
 
 try {
-    $result = $apiInstance->getBooking($facility_id, $doctor_id, $address_id, $booking_id);
+    $result = $apiInstance->getBooking($facility_id, $doctor_id, $address_id, $booking_id, $with);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->getBooking: ', $e->getMessage(), PHP_EOL;
@@ -113,6 +114,7 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **booking_id** | **string**| ID of the Booking |
+ **with** | [**\DocPlanner\Client\Model\BookingScopes[]**](../Model/\DocPlanner\Client\Model\BookingScopes.md)|  | [optional]
 
 ### Return type
 
