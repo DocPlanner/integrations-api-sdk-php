@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 
 
-Get bookings list of a doctor in the facility Passing the `page` parameter in the query string will enable pagination. Extensions: * `booking.patient` - with this parameter in url, query results will return patient data for every booking * `booking.address_service` - with this parameter in url, query results will return address service for every booking * `booking.presence` - with this parameter in url, query results will return additional information weather patient was present for every booking
+Get bookings list of a doctor in the facility Passing the `page` parameter in the query string will enable pagination. Extensions: * `booking.patient` - with this parameter in url, query results will return patient data for every booking * `booking.address_service` - with this parameter in url, query results will return address service for every booking * `booking.presence` - with this parameter in url, query results will return additional information weather patient was present for every booking * `booking.confirmation` - with this parameter in url, query results will return if visit was confirmed for every booking
 
 ### Example
 ```php
