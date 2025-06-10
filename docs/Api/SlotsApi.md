@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 
 
-Adds or replaces the slots. This will override all existing slots for given date ranges
+Adds or replaces the slots. This will override all existing slots for given date ranges.  If a duplicate request (with the same address and payload) is received before the original request is processed, it will be rejected with a 429 Too Many Requests status code.
 
 ### Example
 ```php
