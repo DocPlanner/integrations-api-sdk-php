@@ -279,6 +279,11 @@ class ObjectSerializer
             }
             return $data;
         } else {
+            // If class name doesn't start with backslash, prepend the model namespace
+            if (substr($class, 0, 1) !== '\\' && strpos($class, '\\') === false) {
+                $class = 'DocPlanner\Client\Model\\' . $class;
+            }
+
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
