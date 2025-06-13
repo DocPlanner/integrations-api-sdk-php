@@ -10,6 +10,12 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force generation without checking for differences'
+        required: false
+        default: false
+        type: boolean
   push:
     branches:
       - develop
@@ -31,8 +37,11 @@ jobs:
           key: oas--${{ hashFiles(env.FILE_NAME) }}
       - name: Stop process (no changes)
         id: checksum
-        if: steps.cache.outputs.cache-hit == 'true'
+        if: steps.cache.outputs.cache-hit == 'true' && github.event.inputs.force != 'true'
         run: echo "::set-output name=diff::true"
+      - name: Force generation
+        if: github.event.inputs.force == 'true'
+        run: echo "::set-output name=diff::false"
       - name: Generate specification artifacts
         if: steps.checksum.outputs.diff != 'true'
         uses: actions/upload-artifact@v4
@@ -68,7 +77,7 @@ jobs:
         with:
           java-version: '11'
       - name: Download swagger codegen
-        run: wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.68/swagger-codegen-cli-3.0.68.jar -O swagger-codegen-cli.jar
+        run: wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar -O swagger-codegen-cli.jar
       - name: Generate SDK files
         run: java -jar swagger-codegen-cli.jar generate --git-user-id=DocPlanner --git-repo-id integrations-api-sdk-php -DinvokerPackage=DocPlanner\\Client -i ${{ env.FILE_NAME }} -l php -o ./final/ -t ${{ env.CODEGEN_TEMPLATES_FOLDER }}
       - name: Patch library files
