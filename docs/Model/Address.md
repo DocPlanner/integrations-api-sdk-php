@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
+**city_name** | **string** |  | [optional] 
 **post_code** | **string** |  | [optional] 
 **street** | **string** |  | [optional] 
 **is_online_only** | **bool** |  | [optional] 
