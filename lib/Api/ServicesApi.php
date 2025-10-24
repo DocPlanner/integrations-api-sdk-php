@@ -96,11 +96,12 @@ class ServicesApi
      *
      * @throws \DocPlanner\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \DocPlanner\Client\Model\AddressService
      */
     public function addAddressService($body, $facility_id, $doctor_id, $address_id)
     {
-        $this->addAddressServiceWithHttpInfo($body, $facility_id, $doctor_id, $address_id);
+        list($response) = $this->addAddressServiceWithHttpInfo($body, $facility_id, $doctor_id, $address_id);
+        return $response;
     }
 
     /**
@@ -113,11 +114,11 @@ class ServicesApi
      *
      * @throws \DocPlanner\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \DocPlanner\Client\Model\AddressService, HTTP status code, HTTP response headers (array of strings)
      */
     public function addAddressServiceWithHttpInfo($body, $facility_id, $doctor_id, $address_id)
     {
-        $returnType = '';
+        $returnType = '\DocPlanner\Client\Model\AddressService';
         $request = $this->addAddressServiceRequest($body, $facility_id, $doctor_id, $address_id);
 
         try {
@@ -148,10 +149,32 @@ class ServicesApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\DocPlanner\Client\Model\AddressService',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -227,14 +250,28 @@ class ServicesApi
      */
     public function addAddressServiceAsyncWithHttpInfo($body, $facility_id, $doctor_id, $address_id)
     {
-        $returnType = '';
+        $returnType = '\DocPlanner\Client\Model\AddressService';
         $request = $this->addAddressServiceRequest($body, $facility_id, $doctor_id, $address_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -332,11 +369,11 @@ class ServicesApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/vnd.error+docplanner+json']
+                ['application/vnd.docplanner+json; charset=UTF-8', 'application/vnd.error+docplanner+json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/vnd.error+docplanner+json'],
+                ['application/vnd.docplanner+json; charset=UTF-8', 'application/vnd.error+docplanner+json'],
                 ['application/json']
             );
         }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**updateAddressService**](ServicesApi.md#updateaddressservice) | **PATCH** /facilities/{facility_id}/doctors/{doctor_id}/addresses/{address_id}/services/{address_service_id} | 
 
 # **addAddressService**
-> addAddressService($body, $facility_id, $doctor_id, $address_id)
+> \DocPlanner\Client\Model\AddressService addAddressService($body, $facility_id, $doctor_id, $address_id)
 
 
 
@@ -38,7 +38,8 @@ $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 
 try {
-    $apiInstance->addAddressService($body, $facility_id, $doctor_id, $address_id);
+    $result = $apiInstance->addAddressService($body, $facility_id, $doctor_id, $address_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServicesApi->addAddressService: ', $e->getMessage(), PHP_EOL;
 }
@@ -56,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\DocPlanner\Client\Model\AddressService**](../Model/AddressService.md)
 
 ### Authorization
 
@@ -65,7 +66,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.error+docplanner+json
+ - **Accept**: application/vnd.docplanner+json; charset=UTF-8, application/vnd.error+docplanner+json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
