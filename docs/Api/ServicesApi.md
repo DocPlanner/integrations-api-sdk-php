@@ -129,11 +129,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAddressService**
-> \DocPlanner\Client\Model\AddressService getAddressService($facility_id, $doctor_id, $address_id, $address_service_id)
+> \DocPlanner\Client\Model\AddressService getAddressService($facility_id, $doctor_id, $address_id, $address_service_id, $with)
 
 
 
-Service returned in this endpoint is an address service.  Service returned here is from a specified address (address_services).
+Service returned in this endpoint is an address service.  Service returned here is from a specified address (address_services).  Extensions: * `address_service.allowed_patients` - with this parameter in url, query results will return additional parameter indicating which type of patients are allowed to book a given service
 
 ### Example
 ```php
@@ -153,9 +153,10 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $address_service_id = "address_service_id_example"; // string | ID of an address service
+$with = array(new \DocPlanner\Client\Model\AddressServiceScopes()); // \DocPlanner\Client\Model\AddressServiceScopes[] | 
 
 try {
-    $result = $apiInstance->getAddressService($facility_id, $doctor_id, $address_id, $address_service_id);
+    $result = $apiInstance->getAddressService($facility_id, $doctor_id, $address_id, $address_service_id, $with);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServicesApi->getAddressService: ', $e->getMessage(), PHP_EOL;
@@ -171,6 +172,7 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **address_service_id** | **string**| ID of an address service |
+ **with** | [**\DocPlanner\Client\Model\AddressServiceScopes[]**](../Model/\DocPlanner\Client\Model\AddressServiceScopes.md)|  | [optional]
 
 ### Return type
 
@@ -188,11 +190,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAddressServices**
-> \DocPlanner\Client\Model\AddressServices getAddressServices($facility_id, $doctor_id, $address_id, $start)
+> \DocPlanner\Client\Model\AddressServices getAddressServices($facility_id, $doctor_id, $address_id, $start, $with)
 
 
 
-Services returned in this endpoint are address services.  Services returned here are from specified address (address_services).
+Services returned in this endpoint are address services.  Services returned here are from specified address (address_services).  Extensions: * `address_service.allowed_patients` - with this parameter in url, query results will return additional parameter indicating which type of patients are allowed to book a given service
 
 ### Example
 ```php
@@ -212,9 +214,10 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request). Limits results to only those linked to slots that start on that date.
+$with = array(new \DocPlanner\Client\Model\AddressServicesScopes()); // \DocPlanner\Client\Model\AddressServicesScopes[] | 
 
 try {
-    $result = $apiInstance->getAddressServices($facility_id, $doctor_id, $address_id, $start);
+    $result = $apiInstance->getAddressServices($facility_id, $doctor_id, $address_id, $start, $with);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServicesApi->getAddressServices: ', $e->getMessage(), PHP_EOL;
@@ -230,6 +233,7 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request). Limits results to only those linked to slots that start on that date. | [optional]
+ **with** | [**\DocPlanner\Client\Model\AddressServicesScopes[]**](../Model/\DocPlanner\Client\Model\AddressServicesScopes.md)|  | [optional]
 
 ### Return type
 
@@ -251,7 +255,7 @@ Name | Type | Description  | Notes
 
 
 
-Services returned in this endpoint are dictionary services.  Services returned here are from a dictionary (item_services).  Scopes:  * `services.only_diagnostics` - with this parameter in url, query results will return only dictionary of services dedicated to integration with diagnostics marketplace
+Services returned in this endpoint are dictionary services.  Services returned here are from a dictionary (item_services).  Extensions:  * `services.only_diagnostics` - with this parameter in url, query results will return only dictionary of services dedicated to integration with diagnostics marketplace
 
 ### Example
 ```php
