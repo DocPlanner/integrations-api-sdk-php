@@ -1,6 +1,6 @@
 <?php
 /**
- * AllowedPatientsData
+ * AddAddressInsuranceProviderRequestInsurancePlans
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AllowedPatientsData Class Doc Comment
+ * AddAddressInsuranceProviderRequestInsurancePlans Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AllowedPatientsData implements ModelInterface, ArrayAccess
+class AddAddressInsuranceProviderRequestInsurancePlans implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AllowedPatientsData';
+    protected static $swaggerModelName = 'AddAddressInsuranceProviderRequest_insurance_plans';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,7 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'minimum_age' => 'int',
-'maximum_age' => 'int'    ];
+        'insurance_plan_id' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -65,8 +64,7 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'minimum_age' => null,
-'maximum_age' => null    ];
+        'insurance_plan_id' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -95,8 +93,7 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'minimum_age' => 'minimum_age',
-'maximum_age' => 'maximum_age'    ];
+        'insurance_plan_id' => 'insurance_plan_id'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -104,8 +101,7 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'minimum_age' => 'setMinimumAge',
-'maximum_age' => 'setMaximumAge'    ];
+        'insurance_plan_id' => 'setInsurancePlanId'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -113,8 +109,7 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'minimum_age' => 'getMinimumAge',
-'maximum_age' => 'getMaximumAge'    ];
+        'insurance_plan_id' => 'getInsurancePlanId'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -174,8 +169,7 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['minimum_age'] = isset($data['minimum_age']) ? $data['minimum_age'] : null;
-        $this->container['maximum_age'] = isset($data['maximum_age']) ? $data['maximum_age'] : null;
+        $this->container['insurance_plan_id'] = isset($data['insurance_plan_id']) ? $data['insurance_plan_id'] : null;
     }
 
     /**
@@ -203,49 +197,25 @@ class AllowedPatientsData implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets minimum_age
+     * Gets insurance_plan_id
      *
-     * @return int
+     * @return string
      */
-    public function getMinimumAge()
+    public function getInsurancePlanId()
     {
-        return $this->container['minimum_age'];
+        return $this->container['insurance_plan_id'];
     }
 
     /**
-     * Sets minimum_age
+     * Sets insurance_plan_id
      *
-     * @param int $minimum_age Minimum age of patients allowed for this service
+     * @param string $insurance_plan_id ID of an insurance plan from DP dictionary
      *
      * @return $this
      */
-    public function setMinimumAge($minimum_age)
+    public function setInsurancePlanId($insurance_plan_id)
     {
-        $this->container['minimum_age'] = $minimum_age;
-
-        return $this;
-    }
-
-    /**
-     * Gets maximum_age
-     *
-     * @return int
-     */
-    public function getMaximumAge()
-    {
-        return $this->container['maximum_age'];
-    }
-
-    /**
-     * Sets maximum_age
-     *
-     * @param int $maximum_age Maximum age of patients allowed for this service
-     *
-     * @return $this
-     */
-    public function setMaximumAge($maximum_age)
-    {
-        $this->container['maximum_age'] = $maximum_age;
+        $this->container['insurance_plan_id'] = $insurance_plan_id;
 
         return $this;
     }
