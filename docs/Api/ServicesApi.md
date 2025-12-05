@@ -133,7 +133,7 @@ void (empty response body)
 
 
 
-Service returned in this endpoint is an address service.  Service returned here is from a specified address (address_services).  Extensions: * `address_service.allowed_patients` - with this parameter in url, query results will return additional parameter indicating which type of patients are allowed to book a given service * `address_service.custom_name` - with this parameter in url, query results will return additional field with a custom name of an address service
+Service returned in this endpoint is an address service.  Service returned here is from a specified address (address_services).  Extensions: * `address_service.allowed_patients` - with this parameter in url, query results will return additional parameter indicating which type of patients are allowed to book a given service * `address_service.custom_name` - with this parameter in url, query results will return additional field with a custom name of an address service * `address_service.public_insurance_flow` - with this parameter in url, query results will return information if public insurance flow is supported
 
 ### Example
 ```php
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 
 
-Services returned in this endpoint are address services.  Services returned here are from specified address (address_services).  Extensions: * `address_service.allowed_patients` - with this parameter in url, query results will return additional parameter indicating which type of patients are allowed to book a given service * `address_service.custom_name` - with this parameter in url, query results will return additional field with a custom name of an address service
+Services returned in this endpoint are address services.  Services returned here are from specified address (address_services).  Extensions: * `address_service.allowed_patients` - with this parameter in url, query results will return additional parameter indicating which type of patients are allowed to book a given service * `address_service.custom_name` - with this parameter in url, query results will return additional field with a custom name of an address service * `address_service.public_insurance_flow` - with this parameter in url, query results will return information if public insurance flow is supported
 
 ### Example
 ```php

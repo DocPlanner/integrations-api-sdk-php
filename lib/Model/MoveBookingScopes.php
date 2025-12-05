@@ -1,6 +1,6 @@
 <?php
 /**
- * AddressServicesScopes
+ * MoveBookingScopes
  *
  * PHP version 5
  *
@@ -30,21 +30,19 @@ namespace DocPlanner\Client\Model;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AddressServicesScopes Class Doc Comment
+ * MoveBookingScopes Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddressServicesScopes
+class MoveBookingScopes
 {
     /**
      * Possible values of this enum
      */
-    const ALLOWED_PATIENTS = 'address_service.allowed_patients';
-const CUSTOM_NAME = 'address_service.custom_name';
-const PUBLIC_INSURANCE_FLOW = 'address_service.public_insurance_flow';
+    const FLOW = 'address_service.public_insurance_flow';
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -52,8 +50,6 @@ const PUBLIC_INSURANCE_FLOW = 'address_service.public_insurance_flow';
     public static function getAllowableEnumValues()
     {
         return [
-            self::ALLOWED_PATIENTS,
-self::CUSTOM_NAME,
-self::PUBLIC_INSURANCE_FLOW,        ];
+            self::FLOW,        ];
     }
 }

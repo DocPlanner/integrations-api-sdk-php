@@ -75,7 +75,7 @@ void (empty response body)
 
 
 
-View specific booking.  Extensions: * `booking.moving` - with this parameter in url, query results will return moving data (origin and newest booking ids) as long as the booking was created after 2nd April 2025 (otherwise it will return null); for bookings that were not moved, origin and newest booking ids will be equal the id of a booking requested
+View specific booking.  Extensions: * `booking.moving` - with this parameter in url, query results will return moving data (origin and newest booking ids) as long as the booking was created after 2nd April 2025 (otherwise it will return null); for bookings that were not moved, origin and newest booking ids will be equal the id of a booking requested * `address_service.public_insurance_flow` - with this parameter in url, query results will return information if public insurance flow is supported on booking address
 
 ### Example
 ```php
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 
 
-Get bookings list of a doctor in the facility Passing the `page` parameter in the query string will enable pagination. Extensions: * `booking.patient` - with this parameter in url, query results will return patient data for every booking * `booking.address_service` - with this parameter in url, query results will return address service for every booking * `booking.presence` - with this parameter in url, query results will return additional information weather patient was present for every booking * `booking.confirmation` - with this parameter in url, query results will return if visit was confirmed for every booking
+Get bookings list of a doctor in the facility Passing the `page` parameter in the query string will enable pagination. Extensions: * `booking.patient` - with this parameter in url, query results will return patient data for every booking * `booking.address_service` - with this parameter in url, query results will return address service for every booking * `booking.presence` - with this parameter in url, query results will return additional information weather patient was present for every booking * `booking.confirmation` - with this parameter in url, query results will return if visit was confirmed for every booking * `address_service.public_insurance_flow` - with this parameter in url, query results will return information if public insurance flow is supported on bookings addresses
 
 ### Example
 ```php
@@ -199,11 +199,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **moveBooking**
-> \DocPlanner\Client\Model\Booking moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id)
+> \DocPlanner\Client\Model\Booking moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id, $with)
 
 
 
-Move booking for a doctor
+Move a booking for a doctor  Extensions: * `address_service.public_insurance_flow` - with this parameter in url, query results will return information if public insurance flow is supported on booking address
 
 ### Example
 ```php
@@ -224,9 +224,10 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $booking_id = "booking_id_example"; // string | ID of the Booking
+$with = array(new \DocPlanner\Client\Model\MoveBookingScopes()); // \DocPlanner\Client\Model\MoveBookingScopes[] | 
 
 try {
-    $result = $apiInstance->moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id);
+    $result = $apiInstance->moveBooking($body, $facility_id, $doctor_id, $address_id, $booking_id, $with);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BookingsApi->moveBooking: ', $e->getMessage(), PHP_EOL;
@@ -243,6 +244,7 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **booking_id** | **string**| ID of the Booking |
+ **with** | [**\DocPlanner\Client\Model\MoveBookingScopes[]**](../Model/\DocPlanner\Client\Model\MoveBookingScopes.md)|  | [optional]
 
 ### Return type
 
