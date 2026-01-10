@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **nin** | **string** |  | [optional] 
 **gender** | **string** |  | [optional] 
 **is_returning** | **bool** |  | [optional] 
+**insurance_number** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
