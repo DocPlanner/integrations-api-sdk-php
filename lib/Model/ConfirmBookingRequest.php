@@ -1,6 +1,6 @@
 <?php
 /**
- * AllOfSlotAddressServices
+ * ConfirmBookingRequest
  *
  * PHP version 5
  *
@@ -27,17 +27,19 @@
  */
 
 namespace DocPlanner\Client\Model;
+
+use \ArrayAccess;
 use \DocPlanner\Client\ObjectSerializer;
 
 /**
- * AllOfSlotAddressServices Class Doc Comment
+ * ConfirmBookingRequest Class Doc Comment
  *
  * @category Class
  * @package  DocPlanner\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AllOfSlotAddressServices extends AddressServices 
+class ConfirmBookingRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +48,7 @@ class AllOfSlotAddressServices extends AddressServices
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AllOfSlotAddressServices';
+    protected static $swaggerModelName = 'ConfirmBookingRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +56,7 @@ class AllOfSlotAddressServices extends AddressServices
       * @var string[]
       */
     protected static $swaggerTypes = [
-            ];
+        'confirmed_by' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -62,7 +64,7 @@ class AllOfSlotAddressServices extends AddressServices
       * @var string[]
       */
     protected static $swaggerFormats = [
-            ];
+        'confirmed_by' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -71,7 +73,7 @@ class AllOfSlotAddressServices extends AddressServices
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /**
@@ -81,7 +83,7 @@ class AllOfSlotAddressServices extends AddressServices
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
     /**
@@ -91,7 +93,7 @@ class AllOfSlotAddressServices extends AddressServices
      * @var string[]
      */
     protected static $attributeMap = [
-            ];
+        'confirmed_by' => 'confirmed_by'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -99,7 +101,7 @@ class AllOfSlotAddressServices extends AddressServices
      * @var string[]
      */
     protected static $setters = [
-            ];
+        'confirmed_by' => 'setConfirmedBy'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -107,7 +109,7 @@ class AllOfSlotAddressServices extends AddressServices
      * @var string[]
      */
     protected static $getters = [
-            ];
+        'confirmed_by' => 'getConfirmedBy'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -117,7 +119,7 @@ class AllOfSlotAddressServices extends AddressServices
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -127,7 +129,7 @@ class AllOfSlotAddressServices extends AddressServices
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -137,7 +139,7 @@ class AllOfSlotAddressServices extends AddressServices
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -150,8 +152,27 @@ class AllOfSlotAddressServices extends AddressServices
         return self::$swaggerModelName;
     }
 
-    
+    const CONFIRMED_BY_USER = 'user';
+const CONFIRMED_BY_ADMIN = 'admin';
 
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getConfirmedByAllowableValues()
+    {
+        return [
+            self::CONFIRMED_BY_USER,
+self::CONFIRMED_BY_ADMIN,        ];
+    }
+
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -161,8 +182,7 @@ class AllOfSlotAddressServices extends AddressServices
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
+        $this->container['confirmed_by'] = isset($data['confirmed_by']) ? $data['confirmed_by'] : null;
     }
 
     /**
@@ -172,7 +192,18 @@ class AllOfSlotAddressServices extends AddressServices
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
+
+        if ($this->container['confirmed_by'] === null) {
+            $invalidProperties[] = "'confirmed_by' can't be null";
+        }
+        $allowedValues = $this->getConfirmedByAllowableValues();
+        if (!is_null($this->container['confirmed_by']) && !in_array($this->container['confirmed_by'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'confirmed_by', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -188,6 +219,39 @@ class AllOfSlotAddressServices extends AddressServices
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets confirmed_by
+     *
+     * @return string
+     */
+    public function getConfirmedBy()
+    {
+        return $this->container['confirmed_by'];
+    }
+
+    /**
+     * Sets confirmed_by
+     *
+     * @param string $confirmed_by Who confirmed the booking
+     *
+     * @return $this
+     */
+    public function setConfirmedBy($confirmed_by)
+    {
+        $allowedValues = $this->getConfirmedByAllowableValues();
+        if (!in_array($confirmed_by, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'confirmed_by', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['confirmed_by'] = $confirmed_by;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
