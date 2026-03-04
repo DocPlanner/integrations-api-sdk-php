@@ -162,7 +162,45 @@ class BookingPaymentStatusChangedNotificationDataVisitPaymentStatus implements M
         return self::$swaggerModelName;
     }
 
-    
+    const STATUS_FROM_PAID = 'paid';
+const STATUS_FROM_WAITING_FOR_CONFIRMATION = 'waiting_for_confirmation';
+const STATUS_FROM_NOT_PAID = 'not-paid';
+const STATUS_FROM_REFUNDED = 'refunded';
+const STATUS_FROM_CHARGED_BACK = 'charged_back';
+const STATUS_TO_PAID = 'paid';
+const STATUS_TO_WAITING_FOR_CONFIRMATION = 'waiting_for_confirmation';
+const STATUS_TO_NOT_PAID = 'not-paid';
+const STATUS_TO_REFUNDED = 'refunded';
+const STATUS_TO_CHARGED_BACK = 'charged_back';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusFromAllowableValues()
+    {
+        return [
+            self::STATUS_FROM_PAID,
+self::STATUS_FROM_WAITING_FOR_CONFIRMATION,
+self::STATUS_FROM_NOT_PAID,
+self::STATUS_FROM_REFUNDED,
+self::STATUS_FROM_CHARGED_BACK,        ];
+    }
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusToAllowableValues()
+    {
+        return [
+            self::STATUS_TO_PAID,
+self::STATUS_TO_WAITING_FOR_CONFIRMATION,
+self::STATUS_TO_NOT_PAID,
+self::STATUS_TO_REFUNDED,
+self::STATUS_TO_CHARGED_BACK,        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -192,6 +230,22 @@ class BookingPaymentStatusChangedNotificationDataVisitPaymentStatus implements M
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getStatusFromAllowableValues();
+        if (!is_null($this->container['status_from']) && !in_array($this->container['status_from'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status_from', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusToAllowableValues();
+        if (!is_null($this->container['status_to']) && !in_array($this->container['status_to'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status_to', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -227,6 +281,15 @@ class BookingPaymentStatusChangedNotificationDataVisitPaymentStatus implements M
      */
     public function setStatusFrom($status_from)
     {
+        $allowedValues = $this->getStatusFromAllowableValues();
+        if (!is_null($status_from) && !in_array($status_from, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status_from', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['status_from'] = $status_from;
 
         return $this;
@@ -251,6 +314,15 @@ class BookingPaymentStatusChangedNotificationDataVisitPaymentStatus implements M
      */
     public function setStatusTo($status_to)
     {
+        $allowedValues = $this->getStatusToAllowableValues();
+        if (!is_null($status_to) && !in_array($status_to, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status_to', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['status_to'] = $status_to;
 
         return $this;
