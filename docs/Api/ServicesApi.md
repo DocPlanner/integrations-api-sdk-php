@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getServices**
-> \DocPlanner\Client\Model\Services getServices($with)
+> \DocPlanner\Client\Model\Services getServices($with, $specialization_id)
 
 
 
@@ -272,9 +272,10 @@ $apiInstance = new DocPlanner\Client\Api\ServicesApi(
     $config
 );
 $with = array(new \DocPlanner\Client\Model\ServicesScopes()); // \DocPlanner\Client\Model\ServicesScopes[] | 
+$specialization_id = 56; // int | Filters services by specialization. When provided, only services associated with the given specialization are returned.
 
 try {
-    $result = $apiInstance->getServices($with);
+    $result = $apiInstance->getServices($with, $specialization_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServicesApi->getServices: ', $e->getMessage(), PHP_EOL;
@@ -287,6 +288,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **with** | [**\DocPlanner\Client\Model\ServicesScopes[]**](../Model/\DocPlanner\Client\Model\ServicesScopes.md)|  | [optional]
+ **specialization_id** | **int**| Filters services by specialization. When provided, only services associated with the given specialization are returned. | [optional]
 
 ### Return type
 
