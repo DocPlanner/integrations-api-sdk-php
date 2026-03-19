@@ -187,6 +187,12 @@ class ReplaceSlotsRequestAddressServices implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['address_service_id'] === null) {
+            $invalidProperties[] = "'address_service_id' can't be null";
+        }
+        if ($this->container['duration'] === null) {
+            $invalidProperties[] = "'duration' can't be null";
+        }
         return $invalidProperties;
     }
 

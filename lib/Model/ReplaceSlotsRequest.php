@@ -181,6 +181,9 @@ class ReplaceSlotsRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['slots'] === null) {
+            $invalidProperties[] = "'slots' can't be null";
+        }
         return $invalidProperties;
     }
 

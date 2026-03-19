@@ -220,6 +220,12 @@ self::INSURANCE_ACCEPTED_WITH_INSURANCE_ONLY,        ];
     {
         $invalidProperties = [];
 
+        if ($this->container['start'] === null) {
+            $invalidProperties[] = "'start' can't be null";
+        }
+        if ($this->container['end'] === null) {
+            $invalidProperties[] = "'end' can't be null";
+        }
         $allowedValues = $this->getInsuranceAcceptedAllowableValues();
         if (!is_null($this->container['insurance_accepted']) && !in_array($this->container['insurance_accepted'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -256,7 +262,7 @@ self::INSURANCE_ACCEPTED_WITH_INSURANCE_ONLY,        ];
     /**
      * Sets address_services
      *
-     * @param \DocPlanner\Client\Model\ReplaceSlotsRequestAddressServices[] $address_services address_services
+     * @param \DocPlanner\Client\Model\ReplaceSlotsRequestAddressServices[] $address_services If set to null or empty collection, it will **remove** all the slots from a given time range
      *
      * @return $this
      */
