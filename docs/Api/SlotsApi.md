@@ -133,7 +133,7 @@ void (empty response body)
 
 
 
-List of free slots for the address within specified date range  Extensions: * `slot.services` - with this parameter in url, query results will return address services attached to given slots
+List of free slots for the address within specified date range. The date range between start and end must not exceed 180 days; requests exceeding this limit will return a 400 error.  Extensions: * `slot.services` - with this parameter in url, query results will return address services attached to given slots
 
 ### Example
 ```php
@@ -153,7 +153,7 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
-$end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
+$end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot end date (parameter must be urlencoded before sending request)
 $with = array(new \DocPlanner\Client\Model\SlotsScopes()); // \DocPlanner\Client\Model\SlotsScopes[] | 
 
 try {
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
- **end** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
+ **end** | **\DateTime**| Slot end date (parameter must be urlencoded before sending request) |
  **with** | [**\DocPlanner\Client\Model\SlotsScopes[]**](../Model/\DocPlanner\Client\Model\SlotsScopes.md)|  | [optional]
 
 ### Return type

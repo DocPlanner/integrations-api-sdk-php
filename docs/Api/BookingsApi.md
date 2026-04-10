@@ -217,7 +217,7 @@ $facility_id = "facility_id_example"; // string | ID of the Facility
 $doctor_id = "doctor_id_example"; // string | ID of a doctor in a facility
 $address_id = "address_id_example"; // string | ID of a doctor`s address in a facility
 $start = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
-$end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot start date (parameter must be urlencoded before sending request)
+$end = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Slot end date (parameter must be urlencoded before sending request)
 $page = 56; // int | Page number to use for pagination. If not provided the pagination is not applied.
 $limit = 56; // int | Maximum number of items per page. If not provided the default value of 100 is applied if pagination is used.
 $with = array(new \DocPlanner\Client\Model\BookingsScopes()); // \DocPlanner\Client\Model\BookingsScopes[] | 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
  **doctor_id** | **string**| ID of a doctor in a facility |
  **address_id** | **string**| ID of a doctor&#x60;s address in a facility |
  **start** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
- **end** | **\DateTime**| Slot start date (parameter must be urlencoded before sending request) |
+ **end** | **\DateTime**| Slot end date (parameter must be urlencoded before sending request) |
  **page** | **int**| Page number to use for pagination. If not provided the pagination is not applied. | [optional]
  **limit** | **int**| Maximum number of items per page. If not provided the default value of 100 is applied if pagination is used. | [optional]
  **with** | [**\DocPlanner\Client\Model\BookingsScopes[]**](../Model/\DocPlanner\Client\Model\BookingsScopes.md)|  | [optional]
