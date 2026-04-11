@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **is_visible** | **bool** |  | [optional] 
 **default_duration** | **int** |  | [optional] 
 **allowed_patients** | [**AllOfAddAddressServiceRequestAllowedPatients**](AllOfAddAddressServiceRequestAllowedPatients.md) |  | [optional] 
+**custom_name** | **string** | A custom display name for the service. Cannot be an empty string. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
