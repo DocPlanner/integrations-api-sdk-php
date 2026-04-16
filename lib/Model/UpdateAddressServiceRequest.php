@@ -61,7 +61,8 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
 'description' => 'string',
 'default_duration' => 'int',
 'is_visible' => 'bool',
-'allowed_patients' => 'AllOfUpdateAddressServiceRequestAllowedPatients'    ];
+'allowed_patients' => 'AllOfUpdateAddressServiceRequestAllowedPatients',
+'custom_name' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -74,7 +75,8 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
 'description' => null,
 'default_duration' => null,
 'is_visible' => null,
-'allowed_patients' => null    ];
+'allowed_patients' => null,
+'custom_name' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -108,7 +110,8 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
 'description' => 'description',
 'default_duration' => 'default_duration',
 'is_visible' => 'is_visible',
-'allowed_patients' => 'allowed_patients'    ];
+'allowed_patients' => 'allowed_patients',
+'custom_name' => 'custom_name'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -121,7 +124,8 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
 'description' => 'setDescription',
 'default_duration' => 'setDefaultDuration',
 'is_visible' => 'setIsVisible',
-'allowed_patients' => 'setAllowedPatients'    ];
+'allowed_patients' => 'setAllowedPatients',
+'custom_name' => 'setCustomName'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -134,7 +138,8 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
 'description' => 'getDescription',
 'default_duration' => 'getDefaultDuration',
 'is_visible' => 'getIsVisible',
-'allowed_patients' => 'getAllowedPatients'    ];
+'allowed_patients' => 'getAllowedPatients',
+'custom_name' => 'getCustomName'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -200,6 +205,7 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
         $this->container['default_duration'] = isset($data['default_duration']) ? $data['default_duration'] : null;
         $this->container['is_visible'] = isset($data['is_visible']) ? $data['is_visible'] : null;
         $this->container['allowed_patients'] = isset($data['allowed_patients']) ? $data['allowed_patients'] : null;
+        $this->container['custom_name'] = isset($data['custom_name']) ? $data['custom_name'] : null;
     }
 
     /**
@@ -366,6 +372,30 @@ class UpdateAddressServiceRequest implements ModelInterface, ArrayAccess
     public function setAllowedPatients($allowed_patients)
     {
         $this->container['allowed_patients'] = $allowed_patients;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_name
+     *
+     * @return string
+     */
+    public function getCustomName()
+    {
+        return $this->container['custom_name'];
+    }
+
+    /**
+     * Sets custom_name
+     *
+     * @param string $custom_name A custom display name for the service. Cannot be an empty string. Send null to clear the custom name.
+     *
+     * @return $this
+     */
+    public function setCustomName($custom_name)
+    {
+        $this->container['custom_name'] = $custom_name;
 
         return $this;
     }
