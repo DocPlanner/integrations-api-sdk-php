@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 
 
-Move a booking for a doctor  Extensions: * `address_service.public_insurance_flow` - with this parameter in url, query results will return information if public insurance flow is supported on booking address
+Move a booking for a doctor  The optional **address_id** in the body may name an address of a **different doctor within the same facility**, which reassigns the booking to that doctor. The doctor is taken from the address, so no separate field is needed, and the `Location` header of the response names the doctor the booking now belongs to. An address outside the facility named in the path is still rejected with `403`. Omitting **address_id**, or naming another address of the same doctor, behaves as it always has.  A booking that still holds money can only be moved to an address billed through the same payment account. When it is not, the request is rejected with `422` and nothing changes — cancel the booking and create a new one instead. A booking whose payment was fully refunded or charged back holds no money, so this restriction does not apply to it.  Extensions:  * `address_service.public_insurance_flow` - with this parameter in url, query results will return information if public insurance flow is supported on booking address
 
 ### Example
 ```php
