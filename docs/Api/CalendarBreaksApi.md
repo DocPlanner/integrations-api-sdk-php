@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 
 
-Delete the calendar break
+Delete the calendar break  If the break was created with **apply_on_coupled_addresses**, the breaks created alongside it on the doctor's coupled addresses in this facility are removed as well.
 
 ### Example
 ```php
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 
 
-Move the calendar break
+Move the calendar break  If the break was created with **apply_on_coupled_addresses**, the breaks created alongside it on the doctor's coupled addresses in this facility are moved to the same new time range.
 
 ### Example
 ```php
