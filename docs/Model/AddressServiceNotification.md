@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
-**price** | **int** | Integer part of the price (decimals truncated) | [optional] 
+**price** | **float** | Service price with up to 2 decimal places | [optional] 
 **is_price_from** | **bool** | If true, the price is the minimum price of the service | [optional] 
 **is_visible** | **bool** |  | [optional] 
 
