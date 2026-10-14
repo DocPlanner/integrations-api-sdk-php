@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **visit_payment** | **bool** |  | [optional] 
 **visit_payment_status** | **string** |  | [optional] 
 **videocall_url** | **string** |  | [optional] 
+**payment_url** | **string** | Payment page of a booking the patient initiated, present when the patient is asked or offered to pay online. Absent for any other booking. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
