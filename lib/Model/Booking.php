@@ -845,7 +845,7 @@ self::PRESENCE_ABSENT,        ];
     /**
      * Sets payment_url
      *
-     * @param string $payment_url Payment page of a booking the patient initiated, present when the patient is asked or offered to pay online. Absent for any other booking.
+     * @param string $payment_url Payment page of a booking the patient initiated, present when the patient is asked to pay online. A booking whose online payment is optional is taken to be paid at the practice, as if the patient chose it on our payment page, so it carries none unless that choice could not be saved. It is also present, in the move response and in later reads of the booking, after a move stated as **acted_by: patient** takes a confirmed, unpaid book now, pay later booking that requires payment from its free cancellation window into its late cancellation window: the patient must confirm the visit again through it, and a booking left unconfirmed past its payment deadline is canceled. Absent for any other booking.
      *
      * @return $this
      */
