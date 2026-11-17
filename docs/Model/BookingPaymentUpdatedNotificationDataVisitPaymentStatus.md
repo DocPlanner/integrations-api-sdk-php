@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **paid_amount** | **string** |  | [optional] 
 **currency** | **string** |  | [optional] 
 **synced_at** | [**\DateTime**](\DateTime.md) | When Docplanner read this payment state, with milliseconds. Of two notifications for the same booking, the one with the later &#x60;synced_at&#x60; describes a state at least as new. Use it to order &#x60;payment_changed&#x60; notifications. | [optional] 
+**payment_deadline** | [**\DateTime**](\DateTime.md) | The same value as &#x60;payment_deadline&#x60; on the booking: when the payment is due, while it is still open, for a booking Docplanner cancels when it is not paid in time. A booking not paid by then can be canceled for non-payment. Always present on this notification, and &#x60;null&#x60; where the booking carries no deadline, also once the booking is paid, its payment is closed, an insurer pays for the visit or the booking is canceled: remove the deadline you store for the booking. A cancellation alone does not always send this notification; the deadline no longer applies once you receive &#x60;booking-canceled&#x60;. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
